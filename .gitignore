@@ -1,6 +1,8 @@
 .project
 .cproject
 .settings
+.idea
+cmake-build-debug
 bin
 Debug
 Release
@@ -10,4 +12,5 @@ build
 server-resources
 *.swp
 vc2015
+
 

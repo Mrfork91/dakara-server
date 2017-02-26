@@ -1985,7 +1985,7 @@ void LoadSini() {
 
 	/* '&&&&&&&&&&&&&&&&&&&&& FIN TIMERS &&&&&&&&&&&&&&&&&&&&&&& */
 
-	RECORDusuarios = std::stoi(GetVar(GetDatPath(DATPATH::Stats), "INIT", "RECORD"));
+    RECORDusuarios = std::stoi(GetVar(GetDatPath(DATPATH::Stats), "INIT", "Record"));
 
 	/* 'Max users */
 	Temporal = vb6::val(leerSini.GetValue("INIT", "MaxUsers"));
@@ -2040,7 +2040,7 @@ void LoadSini() {
 	Ciudades[eCiudad_cArghal] = Arghal;
 	Ciudades[eCiudad_cArkhein] = Arkhein;
 
-	MD5sCarga(leerSini);
+	//MD5sCarga(leerSini);
 
 	ConsultaPopular.reset(new ConsultasPopulares());
 	ConsultaPopular->LoadData();

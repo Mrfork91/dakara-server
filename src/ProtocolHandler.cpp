@@ -290,11 +290,6 @@ void DakaraClientPacketHandler::handleLoginNewChar(LoginNewChar* p) { (void)p;
 	}
 
 	if (aClon->MaxPersonajes(UserList[UserIndex].ip)) {
-		WriteErrorMsg(UserIndex, "Has creado demasiados personajes.");
-		FlushBuffer(UserIndex);
-		CloseSocket(UserIndex);
-
-		return;
 	}
 
 	{
