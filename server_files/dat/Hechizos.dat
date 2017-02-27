@@ -17,7 +17,7 @@ NumeroHechizos=50
 
 [HECHIZO1]
 Nombre=Antídoto Mágico
-Desc=Con este conjuro podrás mutar los fluidos tóxicos de tu cuerpo para detener su vil accionar, contrarrestando los efectos nocivos de todo tipo de ponzoñas y venenos. Se trata de un conjuro tan simple como necesario, puesto que, además de los magos que provocan envenenamiento, son varias las criaturas que lanzan veneno en estas tierras.
+Desc=Con este conjuro podrás mutar los fluidos tóxicos de tu cuerpo para detener su vil accionar, contrarrestando los efectos nocivos de todo tipo de ponzonas y venenos. Se trata de un conjuro tan simple como necesario, puesto que, además de los magos que provocan envenenamiento, son varias las criaturas que lanzan veneno en estas tierras.
 PalabrasMagicas=NIHIL VED
 HechizeroMsg=Le has detenido el envenenamiento a 
 PropioMsg=Te has detenido el envenenamiento.
@@ -80,7 +80,7 @@ Resis=0
 
 [HECHIZO2]
 Nombre=Dardo Mágico
-Desc=Éste es uno de los más elementales y sencillos hechizos de ataque que podrás aprender. No causa un gran daño a la víctima, pero al consumir muy pocos recursos, resulta una herramienta muy útil para el entrenamiento de los jóvenes hechiceros.
+Desc=Éste es uno de los más elementales y sencillos hechizos de ataque que podrás aprender. No causa un gran dano a la víctima, pero al consumir muy pocos recursos, resulta una herramienta muy útil para el entrenamiento de los jóvenes hechiceros.
 PalabrasMagicas=OHL VOR PEK
 HechizeroMsg=Has lanzado un dardo mágico sobre
 TargetMsg=ha lanzado un dardo mágico sobre ti.
@@ -142,11 +142,11 @@ Resis=1
 
 [HECHIZO3]
 Nombre=Curar Heridas Leves
-Desc=Con este sencillo conjuro podrás efectuar la sanación inmediata de pequeñas heridas y devolver lentamente la salud a quien se lo lances. Suele ser de gran utilidad para los jóvenes aprendices de magia, para poder entrenar al resguardo del ataque de las fieras salvajes.
+Desc=Con este sencillo conjuro podrás efectuar la sanación inmediata de pequenas heridas y devolver lentamente la salud a quien se lo lances. Suele ser de gran utilidad para los jóvenes aprendices de magia, para poder entrenar al resguardo del ataque de las fieras salvajes.
 PalabrasMagicas=CORP SANC
-HechizeroMsg=Le has curado algunas pequeñas heridas a 
-TargetMsg=te ha curado algunas pequeñas heridas.
-PropioMsg=Te has curado algunas pequeñas heridas.
+HechizeroMsg=Le has curado algunas pequenas heridas a 
+TargetMsg=te ha curado algunas pequenas heridas.
+PropioMsg=Te has curado algunas pequenas heridas.
 Tipo=1
 WAV=17
 FXgrh=0
@@ -393,7 +393,7 @@ Resis=1
 
 [HECHIZO7]
 Nombre=Flecha Eléctrica
-Desc=Éste es un interesante hechizo que te permitirá canalizar las elergías eléctricas del mundo en ataques direccionados a un determinado objetivo. Si bien el daño que causa no es muy grande, es seguramente la mejor herramienta para el entrenamiento y la defensa de los hechiceros menos experimentados.
+Desc=Éste es un interesante hechizo que te permitirá canalizar las elergías eléctricas del mundo en ataques direccionados a un determinado objetivo. Si bien el dano que causa no es muy grande, es seguramente la mejor herramienta para el entrenamiento y la defensa de los hechiceros menos experimentados.
 PalabrasMagicas=SUN VAP
 HechizeroMsg=Has lanzado una flecha eléctrica sobre 
 TargetMsg=ha lanzado una flecha eléctrica sobre ti.
@@ -643,7 +643,7 @@ Resis=0
 
 [HECHIZO11]
 Nombre=Resucitar
-Desc=Encanto sagrado que te permitirá devolver la vida a los difuntos. Esta increíble habilidad fue enseñada personalmente por el mismo Gulfas Morgolock al otrora Rey de los hombres en las remotas épocas del Árbol Blanco. Su aprendizaje no es fácil y su utilización resulta muy desgastante, pero sin dudas es una de las piezas más importantes de la magia de las tierras del Argentum. 
+Desc=Encanto sagrado que te permitirá devolver la vida a los difuntos. Esta increíble habilidad fue ensenada personalmente por el mismo Gulfas Morgolock al otrora Rey de los hombres en las remotas épocas del Árbol Blanco. Su aprendizaje no es fácil y su utilización resulta muy desgastante, pero sin dudas es una de las piezas más importantes de la magia de las tierras del Argentum. 
 PalabrasMagicas=AHIL KNÄ XÄR
 HechizeroMsg=Has resucitado a 
 TargetMsg=te ha resucitado.
@@ -768,7 +768,7 @@ Resis=1
 
 [HECHIZO13]
 Nombre=Terrible hambre de Igôr
-Desc=Abominable hechizo que provoca en la víctima un estado de desnutrición absoluto. Este encantamiento fue creado por el mago Nimbul mientras estudiaba la conducta de los gigantes de las montañas, la primer víctima de este hechizo fue un gigante llamado Igôr, de ahí el nombre del mismo.
+Desc=Abominable hechizo que provoca en la víctima un estado de desnutrición absoluto. Este encantamiento fue creado por el mago Nimbul mientras estudiaba la conducta de los gigantes de las montanas, la primer víctima de este hechizo fue un gigante llamado Igôr, de ahí el nombre del mismo.
 PalabrasMagicas=ÛX'ÔL AEX
 HechizeroMsg=Le has lanzado terrible hambre de Igôr a 
 TargetMsg=te ha lanzado terrible hambre de Igôr.
@@ -893,7 +893,7 @@ Resis=0
 
 [HECHIZO15]
 Nombre=Tormenta de Fuego
-Desc=Poderoso hechizo de ataque. Su costo en relación al daño que provoca lo convierte en un arma más propia para el combate que para el entrenamiento. Es ideal para aquellos aprendices de magia que todavía no alcanzaron a conocer el secreto de los hechizos mayores y necesitan estar bien equipados para la guerra.
+Desc=Poderoso hechizo de ataque. Su costo en relación al dano que provoca lo convierte en un arma más propia para el combate que para el entrenamiento. Es ideal para aquellos aprendices de magia que todavía no alcanzaron a conocer el secreto de los hechizos mayores y necesitan estar bien equipados para la guerra.
 PalabrasMagicas=EN VAX ON TAR
 HechizeroMsg=Has lanzado una tormenta de fuego sobre 
 TargetMsg=lanzó una tormenta de fuego sobre ti.
@@ -1332,7 +1332,7 @@ Resis=0
 [HECHIZO22]
 Nombre=Llamado a Uhkrul
 Desc=Invoca un Dragón Rojo.
-PalabrasMagicas=Arg Zagañarak
+PalabrasMagicas=Arg Zaganarak
 HechizeroMsg=Llamado a Uhkrul.
 Tipo=4
 WAV=17
@@ -1392,7 +1392,7 @@ Resis=0
 
 [HECHIZO23]
 Nombre=Descarga Eléctrica
-Desc=Éste es uno de los hechizos de daño más poderoso de todo el Argentum. Al controlarlo podrás manipular las fuerzas de la naturaleza de modo tal que del cielo mismo caiga una fuerte descarga de electricidad sobre el objetivo. El daño que provoca en sus vícitimas puede ser mortal frente a principiantes o aprendices.
+Desc=Éste es uno de los hechizos de dano más poderoso de todo el Argentum. Al controlarlo podrás manipular las fuerzas de la naturaleza de modo tal que del cielo mismo caiga una fuerte descarga de electricidad sobre el objetivo. El dano que provoca en sus vícitimas puede ser mortal frente a principiantes o aprendices.
 PalabrasMagicas=T'HY KOOOL
 HechizeroMsg=Has lanzado una descarga eléctrica sobre 
 TargetMsg=ha lanzado una descarga eléctrica sobre ti.
@@ -1518,7 +1518,7 @@ Resis=0
 [HECHIZO25]
 Nombre=Apocalipsis
 Desc=El ataque mágico más letal de estas tierras. Sólo aquellos avezados en el arte de la magia pueden aprender este temible hechizo. Su poder es fulminante y suele ser mortal para quien es víctima de él.  
-PalabrasMagicas=Rahma Nañarak O'al
+PalabrasMagicas=Rahma Nanarak O'al
 HechizeroMsg=Has lanzado Apocalipsis sobre 
 TargetMsg=lanzó Apocalipsis sobre ti.
 Tipo=1
@@ -1952,7 +1952,7 @@ Resis=0
 
 [HECHIZO32]
 Nombre=Ira de Dios
-Desc=Sólo el encono de los Dioses puede provocar tanto daño.
+Desc=Sólo el encono de los Dioses puede provocar tanto dano.
 PalabrasMagicas=La IRA de Dios
 HechizeroMsg=Has lanzado la IRA de Dios sobre 
 TargetMsg=te lanzó la IRA de Dios.

@@ -66,7 +66,7 @@ Obj5=382-1000
 
 [NPC20]
 Name=Sastre
-Desc=¡Acérquese! Tengo pequeñas prendas que serán de su agrado...
+Desc=¡Acérquese! Tengo pequenas prendas que serán de su agrado...
 Head=303
 Body=180
 Heading=3
@@ -285,7 +285,7 @@ Obj5=1002-1000
 
 [NPC46]
 Name=Mago
-Desc=Bienvenido a mi pequeña tienda de Ullathorpe... Tengo algunos hechizos que podrían interesarte.
+Desc=Bienvenido a mi pequena tienda de Ullathorpe... Tengo algunos hechizos que podrían interesarte.
 Head=110
 Body=46
 Heading=3
@@ -316,7 +316,7 @@ Obj5=658-1000
 Obj6=659-1000
 
 [NPC33]
-Name=Leñador
+Name=Lenador
 Desc=¡Hola muchacho!, si deseas vender o comprar madera escribe /COMERCIAR.
 Head=4
 Body=1
@@ -345,7 +345,7 @@ Obj2=1005-1000
 
 [NPC34]
 Name=Cullighan
-Desc=Usted sabe que no hay persona noble o respetable en estas tierras que no tenga su propia vivienda. ¡acérquese y sea dueño de una de las exclusivas casas de Ullathorpe. ¡Será admirado por toda la población!
+Desc=Usted sabe que no hay persona noble o respetable en estas tierras que no tenga su propia vivienda. ¡acérquese y sea dueno de una de las exclusivas casas de Ullathorpe. ¡Será admirado por toda la población!
 Head=33
 Body=240
 Heading=3
@@ -606,7 +606,7 @@ Obj5=382-1000
 
 [NPC23]
 Name=Sastre
-Desc=¡Acérquese! Tengo pequeñas prendas que serán de su agrado...
+Desc=¡Acérquese! Tengo pequenas prendas que serán de su agrado...
 Head=404
 Body=180
 Heading=3
@@ -760,7 +760,7 @@ NroItems=1
 Obj1=187-1000
 
 [NPC33]
-Name=Leñador
+Name=Lenador
 Desc=¡Hola muchacho!, si deseas vender o comprar madera escribe /COMERCIAR.
 Head=4
 Body=1
@@ -820,7 +820,7 @@ Obj5=480-10000
 
 [NPC47]
 Name=Mago
-Desc=Bienvenido a mi pequeña tienda de Nix... Tengo algunos hechizos que podrían interesarte.
+Desc=Bienvenido a mi pequena tienda de Nix... Tengo algunos hechizos que podrían interesarte.
 Head=110
 Body=46
 Heading=3
@@ -1052,7 +1052,7 @@ Obj9=1009-1000
 
 [NPC51]
 Name=Mago
-Desc=Bienvenido a mi pequeña Tienda de Banderbill... Tengo algunos hechizos que podrían interesarte.
+Desc=Bienvenido a mi pequena Tienda de Banderbill... Tengo algunos hechizos que podrían interesarte.
 Head=110
 Body=46
 Heading=3
@@ -1164,7 +1164,7 @@ Obj11=1010-1000
 
 [NPC26]
 Name=Sastre
-Desc=¡Adelante hermosa niña! En mi tienda encontrarás vestidos hechos para tí!
+Desc=¡Adelante hermosa nina! En mi tienda encontrarás vestidos hechos para tí!
 Head=173
 Body=121
 Heading=3
@@ -1881,7 +1881,7 @@ Obj8=123-1000
 
 [NPC61]
 Name=Mago
-Desc=Bienvenido a mi pequeña tienda de Arkhein... Tengo algunos hechizos que podrían interesarte.
+Desc=Bienvenido a mi pequena tienda de Arkhein... Tengo algunos hechizos que podrían interesarte.
 Head=110
 Body=46
 Heading=3
@@ -2181,7 +2181,7 @@ Obj1=534-1000
 
 [NPC9]
 Name=Ralph
-Desc=¡Hola, pequeño aventurero, tengo aquí unas mercaderías para saciar tu hambre y sed!.
+Desc=¡Hola, pequeno aventurero, tengo aquí unas mercaderías para saciar tu hambre y sed!.
 Head=504
 Body=202
 Heading=3
@@ -2592,7 +2592,7 @@ Obj9=985-1000
 
 [NPC117]
 Name=Sastre
-Desc=¡Aquí en la Ciudad Perdida encontrarán las mejores ropas pequeñas de todo el mundo!
+Desc=¡Aquí en la Ciudad Perdida encontrarán las mejores ropas pequenas de todo el mundo!
 Head=402
 Body=136
 Heading=3
@@ -2750,7 +2750,7 @@ Obj5=480-10000
 
 [NPC103]
 Name=Carahuel
-Desc=¡Hola, pequeño amigo! ¿Estás buscando algo para llenar tu estómago? Creo que puedo ayudarte...
+Desc=¡Hola, pequeno amigo! ¿Estás buscando algo para llenar tu estómago? Creo que puedo ayudarte...
 Head=474
 Body=309
 Heading=3
@@ -2883,7 +2883,7 @@ Obj5=382-1000
 
 [NPC68]
 Name=Odkon
-Desc=¡Acérquese pequeño vistante de Arghal... Tengo prendas a su medida.
+Desc=¡Acérquese pequeno vistante de Arghal... Tengo prendas a su medida.
 Head=404
 Body=371
 Heading=3
@@ -2977,7 +2977,7 @@ Obj6=645-1000
 
 [NPC59]
 Name=Mago
-Desc=Bienvenido, neófito a ésta, a mi pequeña escuela de Magia, ubicada en el corazón mismo de la ciudad de Arghal.
+Desc=Bienvenido, neófito a ésta, a mi pequena escuela de Magia, ubicada en el corazón mismo de la ciudad de Arghal.
 Head=20
 Body=34
 Heading=3
@@ -3010,7 +3010,7 @@ Obj7=659-1000
 
 [NPC103]
 Name=Carahuel
-Desc=¡Hola, pequeño amigo! ¿Estás buscando algo para llenar tu estómago? Creo que puedo ayudarte...
+Desc=¡Hola, pequeno amigo! ¿Estás buscando algo para llenar tu estómago? Creo que puedo ayudarte...
 Head=474
 Body=309
 Heading=3
@@ -3166,7 +3166,7 @@ Obj8=563-1000
 
 [NPC157]
 Name=Magia Newbie
-Desc=Bienvenido a mi pequeña tienda. Tengo algunos hechizos que podrían interesarte.
+Desc=Bienvenido a mi pequena tienda. Tengo algunos hechizos que podrían interesarte.
 Head=110
 Body=46
 Heading=3
