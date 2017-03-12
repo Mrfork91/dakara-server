@@ -20,6 +20,7 @@
 #include "TCP.h"
 #include <fstream>
 #include "Crypto.h"
+#include "DotIO.h"
 
 void DarCuerpo(int UserIndex) {
 	/* '************************************************* */
@@ -300,7 +301,7 @@ void ConnectNewUser(int UserIndex, const std::string& Name, const std::string& P
 		//CheckEluSkill(UserIndex, i, true);
 	}
 
-	UserList[UserIndex].Stats.SkillPts = 10;
+	UserList[UserIndex].Stats.SkillPts = 0;
 
 	UserList[UserIndex].Char.heading = eHeading_SOUTH;
 
@@ -498,9 +499,9 @@ void ConnectNewUser(int UserIndex, const std::string& Name, const std::string& P
 
 	WriteSaltedPasswordUser(Name, Password);
 
-	SaveUser(UserIndex, GetCharPath(Name));
+	//SaveUser(UserIndex, GetCharPath(Name));
 
-	LogMain("Se ha creado el personaje " + Name + " desde IP=" + UserList[UserIndex].ip);
+	//LogMain("Se ha creado el personaje " + Name + " desde IP=" + UserList[UserIndex].ip);
 
 	/* 'Open User */
 	ConnectUser(UserIndex, Name, Password);
@@ -840,26 +841,29 @@ bool ConnectUser(int UserIndex, const std::string & Name, const std::string & Pa
 		}
 	}
 
-	/* 'Cargamos el personaje */
-	std::shared_ptr<clsIniManager> Leer;
-	Leer.reset(new clsIniManager());
+    /* .io -> cargar pj */
+    DotIO::setupUser(UserIndex);
 
-	Leer->Initialize(GetCharPath(Name));
-
-	/* 'Cargamos los datos del personaje */
-	LoadUserInit(UserIndex, Leer);
-
-	LoadUserStats(UserIndex, Leer);
-
-	if (!ValidateChr(UserIndex)) {
-		WriteErrorMsg(UserIndex, "Error en el personaje.");
-		CloseSocket(UserIndex);
-		return retval;
-	}
-
-	LoadUserReputacion(UserIndex, Leer);
-
-	Leer.reset();
+//	/* 'Cargamos el personaje */
+//	std::shared_ptr<clsIniManager> Leer;
+//	Leer.reset(new clsIniManager());
+//
+//	Leer->Initialize(GetCharPath(Name));
+//
+//	/* 'Cargamos los datos del personaje */
+//	LoadUserInit(UserIndex, Leer);
+//
+//	LoadUserStats(UserIndex, Leer);
+//
+//	if (!ValidateChr(UserIndex)) {
+//		WriteErrorMsg(UserIndex, "Error en el personaje.");
+//		CloseSocket(UserIndex);
+//		return retval;
+//	}
+//
+//	LoadUserReputacion(UserIndex, Leer);
+//
+//	Leer.reset();
 
 	if (UserList[UserIndex].Invent.EscudoEqpSlot == 0) {
 		UserList[UserIndex].Char.ShieldAnim = NingunEscudo;

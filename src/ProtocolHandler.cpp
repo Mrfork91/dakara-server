@@ -204,14 +204,6 @@ void DakaraClientPacketHandler::handleLoginExistingChar(LoginExistingChar* p) { 
 		return;
 	}
 
-	if (!PersonajeExiste(UserName)) {
-		WriteErrorMsg(UserIndex, "El personaje no existe.");
-		FlushBuffer(UserIndex);
-		CloseSocket(UserIndex);
-
-		return;
-	}
-
 	if (BANCheck(UserName)) {
 		WriteErrorMsg(UserIndex,
 				"Se te ha prohibido la entrada a Argentum Online debido a tu mal comportamiento. Puedes consultar el reglamento y el sistema de soporte desde www.argentumonline.com.ar");
