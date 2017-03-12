@@ -254,12 +254,6 @@ void ConnectNewUser(int UserIndex, const std::string& Name, const std::string& P
 		return;
 	}
 
-	/* 'Tiró los dados antes de llegar acá?? */
-	if (UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] == 0) {
-		WriteErrorMsg(UserIndex, "Debe tirar los dados antes de poder crear un personaje.");
-		return;
-	}
-
 	if (!ValidarCabeza(UserRaza, UserSexo, Head)) {
 		LogCheating(
 				"El usuario " + Name + " ha seleccionado la cabeza " + vb6::CStr(Head) + " desde la IP "
@@ -290,20 +284,20 @@ void ConnectNewUser(int UserIndex, const std::string& Name, const std::string& P
 
 	/* '[Pablo (Toxic Waste) 9/01/08] */
 	UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] =
-			UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] + ModRaza[UserRaza].Fuerza;
+			18 + ModRaza[UserRaza].Fuerza;
 	UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] =
-			UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] + ModRaza[UserRaza].Agilidad;
+			18 + ModRaza[UserRaza].Agilidad;
 	UserList[UserIndex].Stats.UserAtributos[eAtributos_Inteligencia] =
-			UserList[UserIndex].Stats.UserAtributos[eAtributos_Inteligencia] + ModRaza[UserRaza].Inteligencia;
+			18 + ModRaza[UserRaza].Inteligencia;
 	UserList[UserIndex].Stats.UserAtributos[eAtributos_Carisma] =
-			UserList[UserIndex].Stats.UserAtributos[eAtributos_Carisma] + ModRaza[UserRaza].Carisma;
+			18 + ModRaza[UserRaza].Carisma;
 	UserList[UserIndex].Stats.UserAtributos[eAtributos_Constitucion] =
-			UserList[UserIndex].Stats.UserAtributos[eAtributos_Constitucion] + ModRaza[UserRaza].Constitucion;
+			18 + ModRaza[UserRaza].Constitucion;
 	/* '[/Pablo (Toxic Waste)] */
 
 	for (i = (1); i <= (NUMSKILLS); i++) {
-		UserList[UserIndex].Stats.UserSkills[i] = 0;
-		CheckEluSkill(UserIndex, i, true);
+		UserList[UserIndex].Stats.UserSkills[i] = 100;
+		//CheckEluSkill(UserIndex, i, true);
 	}
 
 	UserList[UserIndex].Stats.SkillPts = 10;
