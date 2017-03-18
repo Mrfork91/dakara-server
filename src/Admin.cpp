@@ -124,6 +124,7 @@ void ReSpawnOrigPosNpcs() {
 }
 
 void WorldSave() {
+	return;
 	int loopX;
 
 	SendData(SendTarget_ToAll, 0,
