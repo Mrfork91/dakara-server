@@ -145,7 +145,7 @@ bool ValidarCabeza(int UserRaza, int UserGenero, int Head) {
 bool AsciiValidos(const std::string& cad) {
 	for (auto car : cad) {
 		car = std::tolower(car);
-		if ((car < 97 || car > 122) && (car != 32)) {
+		if ((car < 97 || car > 122) && (car != 32) && !Numeric(cad)) {
 			return false;
 		}
 	}
