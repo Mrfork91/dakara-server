@@ -4659,7 +4659,7 @@ void DakaraClientPacketHandler::handlePunishments(Punishments* p) { (void)p;
 	/* 'Last Modification: 25/08/2009 */
 	/* '25/08/2009: ZaMa - Now only admins can see other admins' punishment list */
 	/* '*************************************************** */
-
+    return;
 	std::string Name;
 	int Count;
 

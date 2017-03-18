@@ -497,7 +497,7 @@ void ConnectNewUser(int UserIndex, const std::string& Name, const std::string& P
 	/* 'Valores Default de facciones al Activar nuevo usuario */
 	ResetFacciones(UserIndex);
 
-	WriteSaltedPasswordUser(Name, Password);
+	//WriteSaltedPasswordUser(Name, Password);
 
 	//SaveUser(UserIndex, GetCharPath(Name));
 
@@ -707,6 +707,7 @@ bool ValidateChr(int UserIndex) {
 }
 
 bool ConnectUser(int UserIndex, const std::string & Name, const std::string & Password) {
+    (void) Password;
 	bool retval = false;
 	/* '*************************************************** */
 	/* 'Autor: Unknown (orginal version) */
@@ -758,15 +759,15 @@ bool ConnectUser(int UserIndex, const std::string & Name, const std::string & Pa
 	}
 
 	/* '¿Existe el personaje? */
-	if (!FileExist(GetCharPath(Name), 0)) {
+	/*if (!FileExist(GetCharPath(Name), 0)) {
 		WriteErrorMsg(UserIndex, "El personaje no existe.");
 		FlushBuffer(UserIndex);
 		CloseSocket(UserIndex);
 		return retval;
-	}
+	}*/
 
 	/* La primera vez que el pj se logea le salteamos la password */
-	std::string FilePasswordPlain = GetVar(GetCharPath(Name), "INIT", "Password");
+	/*std::string FilePasswordPlain = GetVar(GetCharPath(Name), "INIT", "Password");
 
 	if (FilePasswordPlain.size() > 0) {
 		WriteSaltedPasswordUser(Name, FilePasswordPlain);
@@ -777,34 +778,20 @@ bool ConnectUser(int UserIndex, const std::string & Name, const std::string & Pa
 		FlushBuffer(UserIndex);
 		CloseSocket(UserIndex);
 		return retval;
-	}
+	}*/
 
-#if 0
 	/* '¿Ya esta conectado el personaje? */
-	if (CheckForSameName(Name)) {
-		if (UserList[NameIndex(Name)].Counters.Saliendo) {
-			WriteErrorMsg(UserIndex, "El usuario está saliendo.");
-		} else {
-			WriteErrorMsg(UserIndex, "Perdón, un usuario con el mismo nombre se ha logueado.");
-		}
-		FlushBuffer(UserIndex);
-		CloseSocket(UserIndex);
-		return retval;
-	}
-#else
-	/* '¿Ya esta conectado el personaje? */
-	int OtherUserIndex;
-	if (CheckForSameName(Name, OtherUserIndex)) {
-		WriteErrorMsg(UserIndex, "Tu personaje ya estaba logeado desde otra ubicacion, fue echado.");
-		FlushBuffer(UserIndex);
-
-		CloseSocket(OtherUserIndex);
-		return retval;
-	}
-#endif
+//	int OtherUserIndex;
+//	if (CheckForSameName(Name, OtherUserIndex)) {
+//		WriteErrorMsg(UserIndex, "Tu personaje ya estaba logeado desde otra ubicacion, fue echado.");
+//		FlushBuffer(UserIndex);
+//
+//		CloseSocket(OtherUserIndex);
+//		return retval;
+//	}
 
 	/* 'Reseteamos los privilegios */
-	UserResetPrivilegios(UserIndex);
+//	UserResetPrivilegios(UserIndex);*/
 
 	/* 'Vemos que clase de user es (se lo usa para setear los privilegios al loguear el PJ) */
 	if (EsAdmin(Name)) {
@@ -1102,7 +1089,7 @@ bool ConnectUser(int UserIndex, const std::string & Name, const std::string & Pa
 	UserList[UserIndex].flags.UserLogged = true;
 
 	/* 'usado para borrar Pjs */
-	WriteVar(GetCharPath(UserList[UserIndex].Name), "INIT", "Logged", "1");
+	//WriteVar(GetCharPath(UserList[UserIndex].Name), "INIT", "Logged", "1");
 
 	//EstadisticasWeb->Informar(EstaNotificaciones_CANTIDAD_ONLINE, NumUsers);
 
@@ -1177,12 +1164,12 @@ bool ConnectUser(int UserIndex, const std::string & Name, const std::string & Pa
 		WriteRainToggle(UserIndex);
 	}
 
-	tStr = a_ObtenerRechazoDeChar(UserList[UserIndex].Name);
-
-	if (vb6::LenB(tStr) != 0) {
-		WriteShowMessageBox(UserIndex,
-				"Tu solicitud de ingreso al clan ha sido rechazada. El clan te explica que: " + tStr);
-	}
+//	tStr = a_ObtenerRechazoDeChar(UserList[UserIndex].Name);
+//
+//	if (vb6::LenB(tStr) != 0) {
+//		WriteShowMessageBox(UserIndex,
+//				"Tu solicitud de ingreso al clan ha sido rechazada. El clan te explica que: " + tStr);
+//	}
 
 	/* 'Load the user statistics */
 	UserConnected(UserIndex);
@@ -1191,9 +1178,7 @@ bool ConnectUser(int UserIndex, const std::string & Name, const std::string & Pa
 
 	LogConnect(UserIndex, true);
 
-	retval = true;
-
-	return retval;
+	return true;
 }
 
 void SendMOTD(int UserIndex) {
@@ -1605,14 +1590,14 @@ void CloseUser(int UserIndex) {
 		SalirDeParty(UserIndex);
 	}
 
-	/* 'Save statistics */
-	UserDisconnected(UserIndex);
-
-	/* ' Grabamos el personaje del usuario */
-	SaveUser(UserIndex, GetCharPath(Name));
-
-	/* 'usado para borrar Pjs */
-	WriteVar(GetCharPath(UserList[UserIndex].Name), "INIT", "Logged", "0");
+//	/* 'Save statistics */
+//	UserDisconnected(UserIndex);
+//
+//	/* ' Grabamos el personaje del usuario */
+//	SaveUser(UserIndex, GetCharPath(Name));
+//
+//	/* 'usado para borrar Pjs */
+//	WriteVar(GetCharPath(UserList[UserIndex].Name), "INIT", "Logged", "0");
 
 	/* 'Quitar el dialogo */
 	/* 'If MapInfo(Map).NumUsers > 0 Then */

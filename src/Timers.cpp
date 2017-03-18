@@ -221,27 +221,27 @@ void AutoSave_Timer() {
 	AreasOptimizacion();
 
 	/* 'Actualizamos el centinela */
-	PasarMinutoCentinela();
-
-	if (Minutos == MinutosWs - 1) {
-		SendData(SendTarget_ToAll, 0,
-				dakara::protocol::server::BuildConsoleMsg("Worldsave en 1 minuto ...", FontTypeNames_FONTTYPE_VENENO));
-	}
-
-	if (Minutos >= MinutosWs) {
-		DoBackUp();
-		aClon->VaciarColeccion();
-		Minutos = 0;
-	}
-
-	if (MinsPjesSave == MinutosGuardarUsuarios - 1) {
-		SendData(SendTarget_ToAll, 0,
-				dakara::protocol::server::BuildConsoleMsg("CharSave en 1 minuto ...", FontTypeNames_FONTTYPE_VENENO));
-	} else if (MinsPjesSave >= MinutosGuardarUsuarios) {
-		ActualizaExperiencias();
-		GuardarUsuarios();
-		MinsPjesSave = 0;
-	}
+//	PasarMinutoCentinela();
+//
+//	if (Minutos == MinutosWs - 1) {
+//		SendData(SendTarget_ToAll, 0,
+//				dakara::protocol::server::BuildConsoleMsg("Worldsave en 1 minuto ...", FontTypeNames_FONTTYPE_VENENO));
+//	}
+//
+//	if (Minutos >= MinutosWs) {
+//		DoBackUp();
+//		aClon->VaciarColeccion();
+//		Minutos = 0;
+//	}
+//
+//	if (MinsPjesSave == MinutosGuardarUsuarios - 1) {
+//		SendData(SendTarget_ToAll, 0,
+//				dakara::protocol::server::BuildConsoleMsg("CharSave en 1 minuto ...", FontTypeNames_FONTTYPE_VENENO));
+//	} else if (MinsPjesSave >= MinutosGuardarUsuarios) {
+//		ActualizaExperiencias();
+//		GuardarUsuarios();
+//		MinsPjesSave = 0;
+//	}
 
 	if (MinutosLatsClean >= 15) {
 		MinutosLatsClean = 0;

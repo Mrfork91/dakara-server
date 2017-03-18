@@ -50,7 +50,7 @@ void InitializeStatistics() {
  /* '*************************************************** */
  
  /* 'A new user connected, load it's trainning time count */
- trainningInfo[UserIndex].trainningTime = vb6::val(GetVar(GetCharPath(UserList[UserIndex].Name), "RESEARCH", "TrainningTime", 30));
+ trainningInfo[UserIndex].trainningTime = 0;
  
  trainningInfo[UserIndex].startTick = (vb6::GetTickCount());
 }
