@@ -190,10 +190,10 @@ void ServerShutdown() {
 	ActualizaExperiencias();
 
 	std::cerr << "Guardando usuarios... " << std::endl;
-	GuardarUsuarios();
+	//GuardarUsuarios();
 
 	std::cerr << "WorldSave... " << std::endl;
-	WorldSave();
+	//WorldSave();
 
 	LimpiaWsApi();
 }
