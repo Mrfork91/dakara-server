@@ -12,7 +12,10 @@ void DotIO::setupUser(int UserIndex, const std::string &Name, eRaza UserRaza,
     loadUserFlags(UserIndex);
 
     loadUserStats2(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+    loadUserInventoryItems(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head); // << ITEMS
+
     loadUserInventory(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+    loadUserPosition(UserIndex);
 
     loadUserInit(UserIndex, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
     loadUserStats(UserIndex, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
@@ -26,115 +29,6 @@ DotIO::loadUserInit(int UserIndex, eRaza UserRaza, eGenero UserSexo, eClass User
     int LoopC;
     std::string ln;
 
-    UserList[UserIndex].Faccion.ArmadaReal = 0;
-    UserList[UserIndex].Faccion.FuerzasCaos = 0;
-    UserList[UserIndex].Faccion.CiudadanosMatados = 0;
-    UserList[UserIndex].Faccion.CriminalesMatados = 0;
-    UserList[UserIndex].Faccion.RecibioArmaduraCaos = 0;
-    UserList[UserIndex].Faccion.RecibioArmaduraReal = 0;
-    UserList[UserIndex].Faccion.RecibioExpInicialCaos = 0;
-    UserList[UserIndex].Faccion.RecibioExpInicialReal = 0;
-    UserList[UserIndex].Faccion.RecompensasCaos = 0;
-    UserList[UserIndex].Faccion.RecompensasReal = 0;
-    UserList[UserIndex].Faccion.Reenlistadas = 0;
-    UserList[UserIndex].Faccion.NivelIngreso = 0;
-    UserList[UserIndex].Faccion.FechaIngreso = "No hay ingresado a ninguna faccion";
-    UserList[UserIndex].Faccion.MatadosIngreso = 0;
-    UserList[UserIndex].Faccion.NextRecompensa = 0;
-
-
-    UserList[UserIndex].Counters.Pena = 0;
-    UserList[UserIndex].Counters.AsignedSkills = 0;
-
-    UserList[UserIndex].Pos.Map = 1; //TODO
-    UserList[UserIndex].Pos.X = 50; //TODO
-    UserList[UserIndex].Pos.Y = 50; //TODO
-
-    UserList[UserIndex].Invent.NroItems = 1; //TODO
-
-    UserList[UserIndex].BancoInvent.NroItems = 0;
-    /* 'Lista de objetos del banco */
-    for (LoopC = (1); LoopC <= (MAX_BANCOINVENTORY_SLOTS); LoopC++) {
-        UserList[UserIndex].BancoInvent.Object[LoopC].ObjIndex = 0;
-        UserList[UserIndex].BancoInvent.Object[LoopC].Amount = 0;
-    }
-
-    /* 'Lista de objetos */
-    for (LoopC = (1); LoopC <= (MAX_INVENTORY_SLOTS); LoopC++) { //TODO
-//        ln = UserFile->GetValue("Inventory", "Obj" + vb6::CStr(LoopC));
-//        UserList[UserIndex].Invent.Object[LoopC].ObjIndex = vb6::val(ReadField(1, ln, 45));
-//        UserList[UserIndex].Invent.Object[LoopC].Amount = vb6::val(ReadField(2, ln, 45));
-//        UserList[UserIndex].Invent.Object[LoopC].Equipped = vb6::val(ReadField(3, ln, 45));
-        UserList[UserIndex].Invent.Object[LoopC].ObjIndex = 0;
-        UserList[UserIndex].Invent.Object[LoopC].Amount = 0;
-        UserList[UserIndex].Invent.Object[LoopC].Equipped = 0;
-    }
-
-    /* 'Obtiene el indice-objeto del arma */
-    UserList[UserIndex].Invent.WeaponEqpSlot = 0; // TODO
-    if (UserList[UserIndex].Invent.WeaponEqpSlot > 0) {
-        UserList[UserIndex].Invent.WeaponEqpObjIndex =
-                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.WeaponEqpSlot].ObjIndex;
-    }
-
-    /* 'Obtiene el indice-objeto del armadura */
-    UserList[UserIndex].Invent.ArmourEqpSlot = 0; // TODO
-    if (UserList[UserIndex].Invent.ArmourEqpSlot > 0) {
-        UserList[UserIndex].Invent.ArmourEqpObjIndex =
-                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.ArmourEqpSlot].ObjIndex;
-        UserList[UserIndex].flags.Desnudo = 0;
-    } else {
-        UserList[UserIndex].flags.Desnudo = 1;
-    }
-
-    /* 'Obtiene el indice-objeto del escudo */
-    UserList[UserIndex].Invent.EscudoEqpSlot = 0; // TODO
-    if (UserList[UserIndex].Invent.EscudoEqpSlot > 0) {
-        UserList[UserIndex].Invent.EscudoEqpObjIndex =
-                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.EscudoEqpSlot].ObjIndex;
-    }
-
-    /* 'Obtiene el indice-objeto del casco */
-    UserList[UserIndex].Invent.CascoEqpSlot = 0; // TODO
-    if (UserList[UserIndex].Invent.CascoEqpSlot > 0) {
-        UserList[UserIndex].Invent.CascoEqpObjIndex =
-                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.CascoEqpSlot].ObjIndex;
-    }
-
-    /* 'Obtiene el indice-objeto barco */
-    UserList[UserIndex].Invent.BarcoSlot = 0; // TODO
-    if (UserList[UserIndex].Invent.BarcoSlot > 0) {
-        UserList[UserIndex].Invent.BarcoObjIndex =
-                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.BarcoSlot].ObjIndex;
-    }
-
-    /* 'Obtiene el indice-objeto municion */
-    UserList[UserIndex].Invent.MunicionEqpSlot = 0; // TODO
-    if (UserList[UserIndex].Invent.MunicionEqpSlot > 0) {
-        UserList[UserIndex].Invent.MunicionEqpObjIndex =
-                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.MunicionEqpSlot].ObjIndex;
-    }
-
-    /* '[Alejo] */
-    /* 'Obtiene el indice-objeto anilo */
-    UserList[UserIndex].Invent.AnilloEqpSlot = 0; // TODO
-    if (UserList[UserIndex].Invent.AnilloEqpSlot > 0) {
-        UserList[UserIndex].Invent.AnilloEqpObjIndex =
-                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.AnilloEqpSlot].ObjIndex;
-    }
-
-    UserList[UserIndex].Invent.MochilaEqpSlot = 0; // TODO
-    if (UserList[UserIndex].Invent.MochilaEqpSlot > 0) {
-        UserList[UserIndex].Invent.MochilaEqpObjIndex =
-                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.MochilaEqpSlot].ObjIndex;
-    }
-
-    UserList[UserIndex].NroMascotas = 0;
-    for (LoopC = (1); LoopC <= (MAXMASCOTAS); LoopC++) {
-        UserList[UserIndex].MascotasType[LoopC] = 0;
-    }
-
-    UserList[UserIndex].GuildIndex = 0;
 
 
 }
@@ -216,6 +110,7 @@ void DotIO::loadUserFlags(int UserIndex) {
 void DotIO::loadUserIni(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
                         const std::string &UserEmail,
                         eCiudad Hogar, int Head) {
+    int LoopC;
 
     UserList[UserIndex].Name = Name;
     UserList[UserIndex].clase = UserClase;
@@ -250,6 +145,16 @@ void DotIO::loadUserIni(int UserIndex, const std::string &Name, eRaza UserRaza, 
     UserList[UserIndex].Faccion.NivelIngreso = 0;
     UserList[UserIndex].Faccion.MatadosIngreso = 0;
     UserList[UserIndex].Faccion.NextRecompensa = 0;
+
+    UserList[UserIndex].Counters.Pena = 0;
+    UserList[UserIndex].Counters.AsignedSkills = 0;
+
+    UserList[UserIndex].GuildIndex = 0;
+
+    UserList[UserIndex].NroMascotas = 0;
+    for (LoopC = (1); LoopC <= (MAXMASCOTAS); LoopC++) {
+        UserList[UserIndex].MascotasType[LoopC] = 0;
+    }
 }
 
 void DotIO::loadUserStats2(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
@@ -330,12 +235,11 @@ void DotIO::loadUserStats2(int UserIndex, const std::string &Name, eRaza UserRaz
     UserList[UserIndex].Stats.ELV = 1;
 }
 
-void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
+void DotIO::loadUserInventoryItems(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
                               const std::string &UserEmail,
                               eCiudad Hogar, int Head) {
-    int i;
+    int i, Slot, LoopC;
     /* '???????????????? INVENTARIO ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿ */
-    int Slot;
     bool IsPaladin;
 
     IsPaladin = UserClase == eClass_Paladin;
@@ -396,7 +300,6 @@ void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza User
     UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
 
     UserList[UserIndex].Invent.ArmourEqpSlot = Slot;
-    UserList[UserIndex].Invent.ArmourEqpObjIndex = UserList[UserIndex].Invent.Object[Slot].ObjIndex;
 
     /* 'Arma (Newbie) */
     Slot = Slot + 1;
@@ -421,11 +324,9 @@ void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza User
     UserList[UserIndex].Invent.Object[Slot].Amount = 1;
     UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
 
-    UserList[UserIndex].Invent.WeaponEqpObjIndex = UserList[UserIndex].Invent.Object[Slot].ObjIndex;
     UserList[UserIndex].Invent.WeaponEqpSlot = Slot;
 
-    UserList[UserIndex].Char.WeaponAnim = GetWeaponAnim(UserIndex,
-                                                        UserList[UserIndex].Invent.WeaponEqpObjIndex);
+
 
     /* ' Municiones (Newbie) */
     if (UserClase == eClass_Hunter) {
@@ -436,7 +337,6 @@ void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza User
         /* ' Equipo flechas */
         UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
         UserList[UserIndex].Invent.MunicionEqpSlot = Slot;
-        UserList[UserIndex].Invent.MunicionEqpObjIndex = 860;
     }
 
     /* ' Manzanas (Newbie) */
@@ -455,4 +355,90 @@ void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza User
 
     /* ' Total Items */
     UserList[UserIndex].Invent.NroItems = Slot;
+}
+
+void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
+                              const std::string &UserEmail,
+                              eCiudad Hogar, int Head) {
+    int i, Slot, LoopC;
+
+    /* 'Lista de objetos */
+    for (LoopC = (Slot + 1); LoopC <= (MAX_INVENTORY_SLOTS); LoopC++) {
+        UserList[UserIndex].Invent.Object[LoopC].ObjIndex = 0;
+        UserList[UserIndex].Invent.Object[LoopC].Amount = 0;
+        UserList[UserIndex].Invent.Object[LoopC].Equipped = 0;
+    }
+
+    /* 'Obtiene el indice-objeto del arma */
+    if (UserList[UserIndex].Invent.WeaponEqpSlot > 0) {
+        UserList[UserIndex].Invent.WeaponEqpObjIndex =
+                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.WeaponEqpSlot].ObjIndex;
+        UserList[UserIndex].Char.WeaponAnim = GetWeaponAnim(UserIndex,
+                                                            UserList[UserIndex].Invent.WeaponEqpObjIndex);
+    }
+
+    /* 'Obtiene el indice-objeto del armadura */
+    if (UserList[UserIndex].Invent.ArmourEqpSlot > 0) {
+        UserList[UserIndex].Invent.ArmourEqpObjIndex =
+                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.ArmourEqpSlot].ObjIndex;
+        UserList[UserIndex].flags.Desnudo = 0;
+    } else {
+        UserList[UserIndex].flags.Desnudo = 1;
+    }
+
+    /* 'Obtiene el indice-objeto del escudo */
+    if (UserList[UserIndex].Invent.EscudoEqpSlot > 0) {
+        UserList[UserIndex].Invent.EscudoEqpObjIndex =
+                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.EscudoEqpSlot].ObjIndex;
+    }
+
+    /* 'Obtiene el indice-objeto del casco */
+    if (UserList[UserIndex].Invent.CascoEqpSlot > 0) {
+        UserList[UserIndex].Invent.CascoEqpObjIndex =
+                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.CascoEqpSlot].ObjIndex;
+    }
+
+    /* 'Obtiene el indice-objeto barco */
+    if (UserList[UserIndex].Invent.BarcoSlot > 0) {
+        UserList[UserIndex].Invent.BarcoObjIndex =
+                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.BarcoSlot].ObjIndex;
+    }
+
+    /* 'Obtiene el indice-objeto municion */
+    if (UserList[UserIndex].Invent.MunicionEqpSlot > 0) {
+        UserList[UserIndex].Invent.MunicionEqpObjIndex =
+                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.MunicionEqpSlot].ObjIndex;
+    }
+
+    /* '[Alejo] */
+    /* 'Obtiene el indice-objeto anilo */
+    if (UserList[UserIndex].Invent.AnilloEqpSlot > 0) {
+        UserList[UserIndex].Invent.AnilloEqpObjIndex =
+                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.AnilloEqpSlot].ObjIndex;
+    }
+
+    if (UserList[UserIndex].Invent.MochilaEqpSlot > 0) {
+        UserList[UserIndex].Invent.MochilaEqpObjIndex =
+                UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.MochilaEqpSlot].ObjIndex;
+    }
+
+
+
+
+
+
+
+
+    UserList[UserIndex].BancoInvent.NroItems = 0;
+    /* 'Lista de objetos del banco */
+    for (LoopC = (1); LoopC <= (MAX_BANCOINVENTORY_SLOTS); LoopC++) {
+        UserList[UserIndex].BancoInvent.Object[LoopC].ObjIndex = 0;
+        UserList[UserIndex].BancoInvent.Object[LoopC].Amount = 0;
+    }
+}
+
+void DotIO::loadUserPosition(int UserIndex){
+    UserList[UserIndex].Pos.Map = 1; //TODO
+    UserList[UserIndex].Pos.X = 50; //TODO
+    UserList[UserIndex].Pos.Y = 50; //TODO
 }

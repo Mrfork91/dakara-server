@@ -26,10 +26,17 @@ private:
 
     static void loadUserIni(int UserIndex, const std::string& Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
                             eCiudad Hogar, int Head);
+
     static void loadUserStats2(int UserIndex, const std::string& Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
                                eCiudad Hogar, int Head);
+
+    static void loadUserInventoryItems(int UserIndex, const std::string& Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
+                                  eCiudad Hogar, int Head);
+
     static void loadUserInventory(int UserIndex, const std::string& Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
                                   eCiudad Hogar, int Head);
+
+    static void loadUserPosition(int UserIndex);
 };
 
 
