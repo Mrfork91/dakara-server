@@ -19,11 +19,15 @@ public:
 private:
     int getFirstFreeSlotNumber();
 
-    void setUserWeapon();
+    int addItem(int item);
 
-    void setUserHelmet();
+    void setPotions();
 
-    void setUserArmor();
+    void setWeapon();
+
+    void setHelmet();
+
+    void setArmor();
 
     int UserIndex;
     std::string Name;
