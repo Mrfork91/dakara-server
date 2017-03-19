@@ -17,21 +17,11 @@ void DotIO::setupUser(int UserIndex, const std::string &Name, eRaza UserRaza,
     loadUserInventory(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
     loadUserPosition(UserIndex);
 
-    loadUserInit(UserIndex, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
     loadUserStats(UserIndex, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
 
     int i;
 }
 
-void
-DotIO::loadUserInit(int UserIndex, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
-                    eCiudad Hogar, int Head) {
-    int LoopC;
-    std::string ln;
-
-
-
-}
 
 void
 DotIO::loadUserStats(int UserIndex, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
@@ -360,14 +350,7 @@ void DotIO::loadUserInventoryItems(int UserIndex, const std::string &Name, eRaza
 void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
                               const std::string &UserEmail,
                               eCiudad Hogar, int Head) {
-    int i, Slot, LoopC;
-
-    /* 'Lista de objetos */
-    for (LoopC = (Slot + 1); LoopC <= (MAX_INVENTORY_SLOTS); LoopC++) {
-        UserList[UserIndex].Invent.Object[LoopC].ObjIndex = 0;
-        UserList[UserIndex].Invent.Object[LoopC].Amount = 0;
-        UserList[UserIndex].Invent.Object[LoopC].Equipped = 0;
-    }
+    int i, LoopC;
 
     /* 'Obtiene el indice-objeto del arma */
     if (UserList[UserIndex].Invent.WeaponEqpSlot > 0) {
@@ -421,12 +404,6 @@ void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza User
         UserList[UserIndex].Invent.MochilaEqpObjIndex =
                 UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.MochilaEqpSlot].ObjIndex;
     }
-
-
-
-
-
-
 
 
     UserList[UserIndex].BancoInvent.NroItems = 0;

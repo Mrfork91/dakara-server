@@ -13,9 +13,6 @@ public:
               eCiudad Hogar, int Head);
 
 private:
-    static void loadUserInit(int userIndex, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
-                             eCiudad Hogar, int Head);
-
     static void loadUserStats(int userIndex, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
                               eCiudad Hogar, int Head);
 
