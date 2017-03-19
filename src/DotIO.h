@@ -38,7 +38,8 @@ private:
                       const std::string &UserEmail,
                       eCiudad Hogar, int Head);
 
-    static void loadUserPosition(int UserIndex);
+    static void updateUserPosition(int UserIndex);
+    static void updateUserLevel(int UserIndex);
 };
 
 

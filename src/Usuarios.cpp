@@ -466,7 +466,7 @@ bool MakeUserChar(bool toMap, int sndIndex, int UserIndex, int Map, int X, int Y
 /* ' */
 /* ' @param UserIndex Specifies reference to user */
 
-void CheckUserLevel(int UserIndex) {
+void CheckUserLevel(int UserIndex, bool notifyUser) {
 	/* '************************************************* */
 	/* 'Author: Unknown */
 	/* 'Last modified: 08/04/2011 */
@@ -511,10 +511,12 @@ void CheckUserLevel(int UserIndex) {
 
 		/* 'Store it! */
 		UserLevelUp(UserIndex);
-
-		SendData(SendTarget_ToPCArea, UserIndex,
-				dakara::protocol::server::BuildPlayWave(SND_NIVEL, UserList[UserIndex].Pos.X, UserList[UserIndex].Pos.Y));
-		WriteConsoleMsg(UserIndex, "¡Has subido de nivel!", FontTypeNames_FONTTYPE_INFO);
+		if (notifyUser) {
+			SendData(SendTarget_ToPCArea, UserIndex,
+					 dakara::protocol::server::BuildPlayWave(SND_NIVEL, UserList[UserIndex].Pos.X,
+															 UserList[UserIndex].Pos.Y));
+			WriteConsoleMsg(UserIndex, "¡Has subido de nivel!", FontTypeNames_FONTTYPE_INFO);
+		}
 
 		if (UserList[UserIndex].Stats.ELV == 1) {
 			Pts = 10;
@@ -712,52 +714,54 @@ void CheckUserLevel(int UserIndex) {
 				UserList[UserIndex].Stats.MinHIT = STAT_MAXHIT_OVER36;
 			}
 		}
+		if (notifyUser) {
+			/* 'Notificamos al user */
+			if (AumentoHP > 0) {
+				WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoHP) + " puntos de vida.",
+								FontTypeNames_FONTTYPE_INFO);
+			}
+			if (AumentoSTA > 0) {
+				WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoSTA) + " puntos de energía.",
+								FontTypeNames_FONTTYPE_INFO);
+			}
+			if (AumentoMANA > 0) {
+				WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoMANA) + " puntos de maná.",
+								FontTypeNames_FONTTYPE_INFO);
+			}
+			if (AumentoHIT > 0) {
+				WriteConsoleMsg(UserIndex, "Tu golpe máximo aumentó en " + vb6::CStr(AumentoHIT) + " puntos.",
+								FontTypeNames_FONTTYPE_INFO);
+				WriteConsoleMsg(UserIndex, "Tu golpe mínimo aumentó en " + vb6::CStr(AumentoHIT) + " puntos.",
+								FontTypeNames_FONTTYPE_INFO);
+			}
 
-		/* 'Notificamos al user */
-		if (AumentoHP > 0) {
-			WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoHP) + " puntos de vida.",
-					FontTypeNames_FONTTYPE_INFO);
+			LogDesarrollo(
+					UserList[UserIndex].Name + " paso a nivel " + vb6::CStr(UserList[UserIndex].Stats.ELV) +
+					" gano HP: "
+					+ vb6::CStr(AumentoHP));
 		}
-		if (AumentoSTA > 0) {
-			WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoSTA) + " puntos de energía.",
-					FontTypeNames_FONTTYPE_INFO);
-		}
-		if (AumentoMANA > 0) {
-			WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoMANA) + " puntos de maná.",
-					FontTypeNames_FONTTYPE_INFO);
-		}
-		if (AumentoHIT > 0) {
-			WriteConsoleMsg(UserIndex, "Tu golpe máximo aumentó en " + vb6::CStr(AumentoHIT) + " puntos.",
-					FontTypeNames_FONTTYPE_INFO);
-			WriteConsoleMsg(UserIndex, "Tu golpe mínimo aumentó en " + vb6::CStr(AumentoHIT) + " puntos.",
-					FontTypeNames_FONTTYPE_INFO);
-		}
-
-		LogDesarrollo(
-				UserList[UserIndex].Name + " paso a nivel " + vb6::CStr(UserList[UserIndex].Stats.ELV) + " gano HP: "
-						+ vb6::CStr(AumentoHP));
 
 		UserList[UserIndex].Stats.MinHp = UserList[UserIndex].Stats.MaxHp;
 
-		/* 'If user is in a party, we modify the variable p_sumaniveleselevados */
-		ActualizarSumaNivelesElevados(UserIndex);
-		/* 'If user reaches lvl 25 and he is in a guild, we check the guild's alignment and expulses the user if guild has factionary alignment */
-
-		if (UserList[UserIndex].Stats.ELV == 25) {
-			GI = UserList[UserIndex].GuildIndex;
-			if (GI > 0) {
-				if (GuildAlignment(GI) == "Del Mal" || GuildAlignment(GI) == "Real") {
-					/* 'We get here, so guild has factionary alignment, we have to expulse the user */
-					m_EcharMiembroDeClan(-1, UserList[UserIndex].Name);
-					SendData(SendTarget_ToGuildMembers, GI,
-							dakara::protocol::server::BuildConsoleMsg(UserList[UserIndex].Name + " deja el clan.",
-									FontTypeNames_FONTTYPE_GUILD));
-					WriteConsoleMsg(UserIndex,
-							"¡Ya tienes la madurez suficiente como para decidir bajo que estandarte pelearás! Por esta razón, hasta tanto no te enlistes en la facción bajo la cual tu clan está alineado, estarás excluído del mismo.",
-							FontTypeNames_FONTTYPE_GUILD);
-				}
-			}
-		}
+//		/* 'If user is in a party, we modify the variable p_sumaniveleselevados */
+//		ActualizarSumaNivelesElevados(UserIndex);
+//		/* 'If user reaches lvl 25 and he is in a guild, we check the guild's alignment and expulses the user if guild has factionary alignment */
+//
+//		if (UserList[UserIndex].Stats.ELV == 25) {
+//			GI = UserList[UserIndex].GuildIndex;
+//			if (GI > 0) {
+//				if (GuildAlignment(GI) == "Del Mal" || GuildAlignment(GI) == "Real") {
+//					/* 'We get here, so guild has factionary alignment, we have to expulse the user */
+//					m_EcharMiembroDeClan(-1, UserList[UserIndex].Name);
+//					SendData(SendTarget_ToGuildMembers, GI,
+//							dakara::protocol::server::BuildConsoleMsg(UserList[UserIndex].Name + " deja el clan.",
+//									FontTypeNames_FONTTYPE_GUILD));
+//					WriteConsoleMsg(UserIndex,
+//							"¡Ya tienes la madurez suficiente como para decidir bajo que estandarte pelearás! Por esta razón, hasta tanto no te enlistes en la facción bajo la cual tu clan está alineado, estarás excluído del mismo.",
+//							FontTypeNames_FONTTYPE_GUILD);
+//				}
+//			}
+//		}
 
 	}
 

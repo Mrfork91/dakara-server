@@ -16,7 +16,9 @@ void DotIO::setupUser(int UserIndex, const std::string &Name, eRaza UserRaza,
     loadUserInventoryItems(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head); // << ITEMS
 
     loadUserInventory(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
-    loadUserPosition(UserIndex);
+
+    updateUserPosition(UserIndex);
+    updateUserLevel(UserIndex);
 
     int i;
 }
@@ -372,8 +374,15 @@ DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza,
     }
 }
 
-void DotIO::loadUserPosition(int UserIndex) {
+void DotIO::updateUserPosition(int UserIndex) {
     UserList[UserIndex].Pos.Map = 1; //TODO
     UserList[UserIndex].Pos.X = 50; //TODO
     UserList[UserIndex].Pos.Y = 50; //TODO
+}
+
+void DotIO::updateUserLevel(int UserIndex){
+    UserList[UserIndex].Stats.Exp = 5679050;
+    CheckUserLevel(UserIndex, false);
+    UserList[UserIndex].Stats.MinMAN = UserList[UserIndex].Stats.MaxMAN;
+    UserList[UserIndex].Stats.MinSta = UserList[UserIndex].Stats.MaxSta;
 }

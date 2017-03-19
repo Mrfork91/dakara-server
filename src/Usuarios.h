@@ -48,7 +48,7 @@ bool MakeUserChar(bool toMap, int sndIndex, int UserIndex, int Map, int X, int Y
 /* ' */
 /* ' @param UserIndex Specifies reference to user */
 
-void CheckUserLevel(int UserIndex);
+void CheckUserLevel(int UserIndex, bool notifyUser = true);
 
 bool PuedeAtravesarAgua(int UserIndex);
 
