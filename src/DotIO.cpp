@@ -11,219 +11,13 @@ void DotIO::setupUser(int UserIndex, const std::string &Name, eRaza UserRaza,
     loadUserReputacion(UserIndex);
     loadUserFlags(UserIndex);
 
+    loadUserStats2(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+    loadUserInventory(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
 
     loadUserInit(UserIndex, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
     loadUserStats(UserIndex, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
 
     int i;
-
-
-
-
-    /* '[Pablo (Toxic Waste) 9/01/08] */
-    UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] =
-            18 + ModRaza[UserRaza].Fuerza;
-    UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] =
-            18 + ModRaza[UserRaza].Agilidad;
-    UserList[UserIndex].Stats.UserAtributos[eAtributos_Inteligencia] =
-            18 + ModRaza[UserRaza].Inteligencia;
-    UserList[UserIndex].Stats.UserAtributos[eAtributos_Carisma] =
-            18 + ModRaza[UserRaza].Carisma;
-    UserList[UserIndex].Stats.UserAtributos[eAtributos_Constitucion] =
-            18 + ModRaza[UserRaza].Constitucion;
-    /* '[/Pablo (Toxic Waste)] */
-
-    for (i = (1); i <= (NUMSKILLS); i++) {
-        UserList[UserIndex].Stats.UserSkills[i] = 100;
-        //CheckEluSkill(UserIndex, i, true);
-    }
-
-    UserList[UserIndex].Stats.SkillPts = 0;
-
-
-    int MiInt;
-    MiInt = RandomNumber(1, UserList[UserIndex].Stats.UserAtributos[eAtributos_Constitucion] / 3);
-
-    UserList[UserIndex].Stats.MaxHp = 15 + MiInt;
-    UserList[UserIndex].Stats.MinHp = 15 + MiInt;
-
-    MiInt = RandomNumber(1, UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] / 6);
-    if (MiInt == 1) {
-        MiInt = 2;
-    }
-
-    UserList[UserIndex].Stats.MaxSta = 20 * MiInt;
-    UserList[UserIndex].Stats.MinSta = 20 * MiInt;
-
-    UserList[UserIndex].Stats.MaxAGU = 100;
-    UserList[UserIndex].Stats.MinAGU = 100;
-
-    UserList[UserIndex].Stats.MaxHam = 100;
-    UserList[UserIndex].Stats.MinHam = 100;
-
-    /* '<-----------------MANA-----------------------> */
-    /* 'Cambio en mana inicial (ToxicWaste) */
-    if (UserClase == eClass_Mage) {
-        MiInt = UserList[UserIndex].Stats.UserAtributos[eAtributos_Inteligencia] * 3;
-        UserList[UserIndex].Stats.MaxMAN = MiInt;
-        UserList[UserIndex].Stats.MinMAN = MiInt;
-    } else if (UserClase == eClass_Cleric || UserClase == eClass_Druid || UserClase == eClass_Bard
-               || UserClase == eClass_Assasin) {
-        UserList[UserIndex].Stats.MaxMAN = 50;
-        UserList[UserIndex].Stats.MinMAN = 50;
-        /* 'Mana Inicial del Bandido (ToxicWaste) */
-    } else if (UserClase == eClass_Bandit) {
-        UserList[UserIndex].Stats.MaxMAN = 50;
-        UserList[UserIndex].Stats.MinMAN = 50;
-    } else {
-        UserList[UserIndex].Stats.MaxMAN = 0;
-        UserList[UserIndex].Stats.MinMAN = 0;
-    }
-
-    if (UserClase == eClass_Mage || UserClase == eClass_Cleric || UserClase == eClass_Druid
-        || UserClase == eClass_Bard || UserClase == eClass_Assasin) {
-        UserList[UserIndex].Stats.UserHechizos[1] = 2;
-
-        if (UserClase == eClass_Druid) {
-            UserList[UserIndex].Stats.UserHechizos[2] = 46;
-        }
-    }
-
-    UserList[UserIndex].Stats.MaxHIT = 2;
-    UserList[UserIndex].Stats.MinHIT = 1;
-
-    UserList[UserIndex].Stats.GLD = 0;
-
-    UserList[UserIndex].Stats.Exp = 0;
-    UserList[UserIndex].Stats.ELU = 300;
-    UserList[UserIndex].Stats.ELV = 1;
-
-    /* '???????????????? INVENTARIO ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿ */
-    int Slot;
-    bool IsPaladin;
-
-    IsPaladin = UserClase == eClass_Paladin;
-
-    /* 'Pociones Rojas (Newbie) */
-    Slot = 1;
-    UserList[UserIndex].Invent.Object[Slot].ObjIndex = 857;
-    UserList[UserIndex].Invent.Object[Slot].Amount = 200;
-
-    /* 'Pociones azules (Newbie) */
-    if (UserList[UserIndex].Stats.MaxMAN > 0 || IsPaladin) {
-        Slot = Slot + 1;
-        UserList[UserIndex].Invent.Object[Slot].ObjIndex = 856;
-        UserList[UserIndex].Invent.Object[Slot].Amount = 200;
-
-    } else {
-        /* 'Pociones amarillas (Newbie) */
-        Slot = Slot + 1;
-        UserList[UserIndex].Invent.Object[Slot].ObjIndex = 855;
-        UserList[UserIndex].Invent.Object[Slot].Amount = 100;
-
-        /* 'Pociones verdes (Newbie) */
-        Slot = Slot + 1;
-        UserList[UserIndex].Invent.Object[Slot].ObjIndex = 858;
-        UserList[UserIndex].Invent.Object[Slot].Amount = 50;
-
-    }
-
-    /* ' Ropa (Newbie) */
-    Slot = Slot + 1;
-    switch (UserRaza) {
-        case eRaza_Humano:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 463;
-            break;
-
-        case eRaza_Elfo:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 464;
-            break;
-
-        case eRaza_Drow:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 465;
-            break;
-
-        case eRaza_Enano:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 466;
-            break;
-
-        case eRaza_Gnomo:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 466;
-            break;
-
-        default:
-            break;
-    }
-
-    /* ' Equipo ropa */
-    UserList[UserIndex].Invent.Object[Slot].Amount = 1;
-    UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
-
-    UserList[UserIndex].Invent.ArmourEqpSlot = Slot;
-    UserList[UserIndex].Invent.ArmourEqpObjIndex = UserList[UserIndex].Invent.Object[Slot].ObjIndex;
-
-    /* 'Arma (Newbie) */
-    Slot = Slot + 1;
-    switch (UserClase) {
-        case eClass_Hunter:
-            /* ' Arco (Newbie) */
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 859;
-            break;
-
-        case eClass_Worker:
-            /* ' Herramienta (Newbie) */
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = RandomNumber(561, 565);
-            break;
-
-        default:
-            /* ' Daga (Newbie) */
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 460;
-            break;
-    }
-
-    /* ' Equipo arma */
-    UserList[UserIndex].Invent.Object[Slot].Amount = 1;
-    UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
-
-    UserList[UserIndex].Invent.WeaponEqpObjIndex = UserList[UserIndex].Invent.Object[Slot].ObjIndex;
-    UserList[UserIndex].Invent.WeaponEqpSlot = Slot;
-
-    UserList[UserIndex].Char.WeaponAnim = GetWeaponAnim(UserIndex,
-                                                        UserList[UserIndex].Invent.WeaponEqpObjIndex);
-
-    /* ' Municiones (Newbie) */
-    if (UserClase == eClass_Hunter) {
-        Slot = Slot + 1;
-        UserList[UserIndex].Invent.Object[Slot].ObjIndex = 860;
-        UserList[UserIndex].Invent.Object[Slot].Amount = 150;
-
-        /* ' Equipo flechas */
-        UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
-        UserList[UserIndex].Invent.MunicionEqpSlot = Slot;
-        UserList[UserIndex].Invent.MunicionEqpObjIndex = 860;
-    }
-
-    /* ' Manzanas (Newbie) */
-    Slot = Slot + 1;
-    UserList[UserIndex].Invent.Object[Slot].ObjIndex = 467;
-    UserList[UserIndex].Invent.Object[Slot].Amount = 100;
-
-    /* ' Jugos (Nwbie) */
-    Slot = Slot + 1;
-    UserList[UserIndex].Invent.Object[Slot].ObjIndex = 468;
-    UserList[UserIndex].Invent.Object[Slot].Amount = 100;
-
-    /* ' Sin casco y escudo */
-    UserList[UserIndex].Char.ShieldAnim = NingunEscudo;
-    UserList[UserIndex].Char.CascoAnim = NingunCasco;
-
-    /* ' Total Items */
-    UserList[UserIndex].Invent.NroItems = Slot;
-
-    /* 'Valores Default de facciones al Activar nuevo usuario */
-    ResetFacciones(UserIndex);
-
-    return;
 }
 
 void
@@ -395,14 +189,6 @@ DotIO::loadUserStats(int UserIndex, eRaza UserRaza, eGenero UserSexo, eClass Use
 
     UserList[UserIndex].Stats.UsuariosMatados = 0;
     UserList[UserIndex].Stats.NPCsMuertos = 0;
-
-    if (0) {
-        UserAsignarPrivilegios(UserIndex, PlayerType_RoyalCouncil);
-    }
-
-    if (0) {
-        UserAsignarPrivilegios(UserIndex, PlayerType_ChaosCouncil);
-    }
 }
 
 void DotIO::loadUserReputacion(int UserIndex) {
@@ -448,4 +234,225 @@ void DotIO::loadUserIni(int UserIndex, const std::string &Name, eRaza UserRaza, 
     UserList[UserIndex].LogOnTime = vb6::Now();
     UserList[UserIndex].UpTime = 0;
     UserList[UserIndex].desc = "";
+
+    UserList[UserIndex].Faccion.ArmadaReal = 0;
+    UserList[UserIndex].Faccion.CiudadanosMatados = 0;
+    UserList[UserIndex].Faccion.CriminalesMatados = 0;
+    UserList[UserIndex].Faccion.FuerzasCaos = 0;
+    UserList[UserIndex].Faccion.FechaIngreso = "No ingresó a ninguna Facción";
+    UserList[UserIndex].Faccion.RecibioArmaduraCaos = 0;
+    UserList[UserIndex].Faccion.RecibioArmaduraReal = 0;
+    UserList[UserIndex].Faccion.RecibioExpInicialCaos = 0;
+    UserList[UserIndex].Faccion.RecibioExpInicialReal = 0;
+    UserList[UserIndex].Faccion.RecompensasCaos = 0;
+    UserList[UserIndex].Faccion.RecompensasReal = 0;
+    UserList[UserIndex].Faccion.Reenlistadas = 0;
+    UserList[UserIndex].Faccion.NivelIngreso = 0;
+    UserList[UserIndex].Faccion.MatadosIngreso = 0;
+    UserList[UserIndex].Faccion.NextRecompensa = 0;
+}
+
+void DotIO::loadUserStats2(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
+                           const std::string &UserEmail,
+                           eCiudad Hogar, int Head) {
+    int i;
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] =
+            18 + ModRaza[UserRaza].Fuerza;
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] =
+            18 + ModRaza[UserRaza].Agilidad;
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Inteligencia] =
+            18 + ModRaza[UserRaza].Inteligencia;
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Carisma] =
+            18 + ModRaza[UserRaza].Carisma;
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Constitucion] =
+            18 + ModRaza[UserRaza].Constitucion;
+
+    for (i = (1); i <= (NUMSKILLS); i++) {
+        UserList[UserIndex].Stats.UserSkills[i] = 100;
+    }
+
+    UserList[UserIndex].Stats.SkillPts = 0;
+
+
+    int MiInt;
+    MiInt = RandomNumber(1, UserList[UserIndex].Stats.UserAtributos[eAtributos_Constitucion] / 3);
+
+    UserList[UserIndex].Stats.MaxHp = 15 + MiInt;
+    UserList[UserIndex].Stats.MinHp = 15 + MiInt;
+
+    MiInt = RandomNumber(1, UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] / 6);
+    if (MiInt == 1) {
+        MiInt = 2;
+    }
+
+    UserList[UserIndex].Stats.MaxSta = 20 * MiInt;
+    UserList[UserIndex].Stats.MinSta = 20 * MiInt;
+
+    UserList[UserIndex].Stats.MaxAGU = 100;
+    UserList[UserIndex].Stats.MinAGU = 100;
+
+    UserList[UserIndex].Stats.MaxHam = 100;
+    UserList[UserIndex].Stats.MinHam = 100;
+
+    if (UserClase == eClass_Mage) {
+        MiInt = UserList[UserIndex].Stats.UserAtributos[eAtributos_Inteligencia] * 3;
+        UserList[UserIndex].Stats.MaxMAN = MiInt;
+        UserList[UserIndex].Stats.MinMAN = MiInt;
+    } else if (UserClase == eClass_Cleric || UserClase == eClass_Druid || UserClase == eClass_Bard
+               || UserClase == eClass_Assasin) {
+        UserList[UserIndex].Stats.MaxMAN = 50;
+        UserList[UserIndex].Stats.MinMAN = 50;
+        /* 'Mana Inicial del Bandido (ToxicWaste) */
+    } else if (UserClase == eClass_Bandit) {
+        UserList[UserIndex].Stats.MaxMAN = 50;
+        UserList[UserIndex].Stats.MinMAN = 50;
+    } else {
+        UserList[UserIndex].Stats.MaxMAN = 0;
+        UserList[UserIndex].Stats.MinMAN = 0;
+    }
+
+    if (UserClase == eClass_Mage || UserClase == eClass_Cleric || UserClase == eClass_Druid
+        || UserClase == eClass_Bard || UserClase == eClass_Assasin) {
+        UserList[UserIndex].Stats.UserHechizos[1] = 2;
+
+        if (UserClase == eClass_Druid) {
+            UserList[UserIndex].Stats.UserHechizos[2] = 46;
+        }
+    }
+
+    UserList[UserIndex].Stats.MaxHIT = 2;
+    UserList[UserIndex].Stats.MinHIT = 1;
+
+    UserList[UserIndex].Stats.GLD = 0;
+
+    UserList[UserIndex].Stats.Exp = 0;
+    UserList[UserIndex].Stats.ELU = 300;
+    UserList[UserIndex].Stats.ELV = 1;
+}
+
+void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
+                              const std::string &UserEmail,
+                              eCiudad Hogar, int Head) {
+    int i;
+    /* '???????????????? INVENTARIO ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿ */
+    int Slot;
+    bool IsPaladin;
+
+    IsPaladin = UserClase == eClass_Paladin;
+
+    /* 'Pociones Rojas (Newbie) */
+    Slot = 1;
+    UserList[UserIndex].Invent.Object[Slot].ObjIndex = 857;
+    UserList[UserIndex].Invent.Object[Slot].Amount = 200;
+
+    /* 'Pociones azules (Newbie) */
+    if (UserList[UserIndex].Stats.MaxMAN > 0 || IsPaladin) {
+        Slot = Slot + 1;
+        UserList[UserIndex].Invent.Object[Slot].ObjIndex = 856;
+        UserList[UserIndex].Invent.Object[Slot].Amount = 200;
+
+    } else {
+        /* 'Pociones amarillas (Newbie) */
+        Slot = Slot + 1;
+        UserList[UserIndex].Invent.Object[Slot].ObjIndex = 855;
+        UserList[UserIndex].Invent.Object[Slot].Amount = 100;
+
+        /* 'Pociones verdes (Newbie) */
+        Slot = Slot + 1;
+        UserList[UserIndex].Invent.Object[Slot].ObjIndex = 858;
+        UserList[UserIndex].Invent.Object[Slot].Amount = 50;
+
+    }
+
+    /* ' Ropa (Newbie) */
+    Slot = Slot + 1;
+    switch (UserRaza) {
+        case eRaza_Humano:
+            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 463;
+            break;
+
+        case eRaza_Elfo:
+            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 464;
+            break;
+
+        case eRaza_Drow:
+            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 465;
+            break;
+
+        case eRaza_Enano:
+            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 466;
+            break;
+
+        case eRaza_Gnomo:
+            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 466;
+            break;
+
+        default:
+            break;
+    }
+
+    /* ' Equipo ropa */
+    UserList[UserIndex].Invent.Object[Slot].Amount = 1;
+    UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
+
+    UserList[UserIndex].Invent.ArmourEqpSlot = Slot;
+    UserList[UserIndex].Invent.ArmourEqpObjIndex = UserList[UserIndex].Invent.Object[Slot].ObjIndex;
+
+    /* 'Arma (Newbie) */
+    Slot = Slot + 1;
+    switch (UserClase) {
+        case eClass_Hunter:
+            /* ' Arco (Newbie) */
+            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 859;
+            break;
+
+        case eClass_Worker:
+            /* ' Herramienta (Newbie) */
+            UserList[UserIndex].Invent.Object[Slot].ObjIndex = RandomNumber(561, 565);
+            break;
+
+        default:
+            /* ' Daga (Newbie) */
+            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 460;
+            break;
+    }
+
+    /* ' Equipo arma */
+    UserList[UserIndex].Invent.Object[Slot].Amount = 1;
+    UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
+
+    UserList[UserIndex].Invent.WeaponEqpObjIndex = UserList[UserIndex].Invent.Object[Slot].ObjIndex;
+    UserList[UserIndex].Invent.WeaponEqpSlot = Slot;
+
+    UserList[UserIndex].Char.WeaponAnim = GetWeaponAnim(UserIndex,
+                                                        UserList[UserIndex].Invent.WeaponEqpObjIndex);
+
+    /* ' Municiones (Newbie) */
+    if (UserClase == eClass_Hunter) {
+        Slot = Slot + 1;
+        UserList[UserIndex].Invent.Object[Slot].ObjIndex = 860;
+        UserList[UserIndex].Invent.Object[Slot].Amount = 150;
+
+        /* ' Equipo flechas */
+        UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
+        UserList[UserIndex].Invent.MunicionEqpSlot = Slot;
+        UserList[UserIndex].Invent.MunicionEqpObjIndex = 860;
+    }
+
+    /* ' Manzanas (Newbie) */
+    Slot = Slot + 1;
+    UserList[UserIndex].Invent.Object[Slot].ObjIndex = 467;
+    UserList[UserIndex].Invent.Object[Slot].Amount = 100;
+
+    /* ' Jugos (Nwbie) */
+    Slot = Slot + 1;
+    UserList[UserIndex].Invent.Object[Slot].ObjIndex = 468;
+    UserList[UserIndex].Invent.Object[Slot].Amount = 100;
+
+    /* ' Sin casco y escudo */
+    UserList[UserIndex].Char.ShieldAnim = NingunEscudo;
+    UserList[UserIndex].Char.CascoAnim = NingunCasco;
+
+    /* ' Total Items */
+    UserList[UserIndex].Invent.NroItems = Slot;
 }
