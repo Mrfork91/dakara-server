@@ -11,68 +11,14 @@ void DotIO::setupUser(int UserIndex, const std::string &Name, eRaza UserRaza,
     loadUserReputacion(UserIndex);
     loadUserFlags(UserIndex);
 
-    loadUserStats2(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+    loadUserStats(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+
     loadUserInventoryItems(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head); // << ITEMS
 
     loadUserInventory(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
     loadUserPosition(UserIndex);
 
-    loadUserStats(UserIndex, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
-
     int i;
-}
-
-
-void
-DotIO::loadUserStats(int UserIndex, eRaza UserRaza, eGenero UserSexo, eClass UserClase, const std::string &UserEmail,
-                     eCiudad Hogar, int Head) {
-    int LoopC;
-
-    for (LoopC = (1); LoopC <= (NUMATRIBUTOS); LoopC++) { //TODO - ACORDARSE MODIFICADORES X CLASE
-        UserList[UserIndex].Stats.UserAtributos[LoopC] = 18;
-        UserList[UserIndex].Stats.UserAtributosBackUP[LoopC] = UserList[UserIndex].Stats.UserAtributos[LoopC];
-    }
-
-    for (LoopC = (1); LoopC <= (NUMSKILLS); LoopC++) {
-        UserList[UserIndex].Stats.UserSkills[LoopC] = 100;
-        UserList[UserIndex].Stats.EluSkills[LoopC] = 0;
-        UserList[UserIndex].Stats.ExpSkills[LoopC] = 0;
-    }
-
-    for (LoopC = (1); LoopC <= (MAXUSERHECHIZOS); LoopC++) { // TODO
-        //UserList[UserIndex].Stats.UserHechizos[LoopC] = vb6::val(UserFile->GetValue("Hechizos", "H" + vb6::CStr(LoopC)));
-        UserList[UserIndex].Stats.UserHechizos[LoopC] = 0;
-    }
-
-    UserList[UserIndex].Stats.GLD = 0;
-    UserList[UserIndex].Stats.Banco = 0;
-
-    UserList[UserIndex].Stats.MaxHp = 100; //TODO
-    UserList[UserIndex].Stats.MinHp = 100; //TODO
-
-    UserList[UserIndex].Stats.MinSta = 100; //TODO
-    UserList[UserIndex].Stats.MaxSta = 100; //TODO
-
-    UserList[UserIndex].Stats.MaxMAN = 100; //TODO
-    UserList[UserIndex].Stats.MinMAN = 100; //TODO
-
-    UserList[UserIndex].Stats.MaxHIT = 100; //TODO
-    UserList[UserIndex].Stats.MinHIT = 100; //TODO
-
-    UserList[UserIndex].Stats.MaxAGU = 100; //TODO
-    UserList[UserIndex].Stats.MinAGU = 100; //TODO
-
-    UserList[UserIndex].Stats.MaxHam = 100; //TODO
-    UserList[UserIndex].Stats.MinHam = 100; //TODO
-
-    UserList[UserIndex].Stats.SkillPts = 0;
-
-    UserList[UserIndex].Stats.Exp = 0;
-    UserList[UserIndex].Stats.ELU = 1000000000;
-    UserList[UserIndex].Stats.ELV = 40;
-
-    UserList[UserIndex].Stats.UsuariosMatados = 0;
-    UserList[UserIndex].Stats.NPCsMuertos = 0;
 }
 
 void DotIO::loadUserReputacion(int UserIndex) {
@@ -147,10 +93,10 @@ void DotIO::loadUserIni(int UserIndex, const std::string &Name, eRaza UserRaza, 
     }
 }
 
-void DotIO::loadUserStats2(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                           const std::string &UserEmail,
-                           eCiudad Hogar, int Head) {
-    int i;
+void DotIO::loadUserStats(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
+                          const std::string &UserEmail,
+                          eCiudad Hogar, int Head) {
+    int i, LoopC;
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] =
             18 + ModRaza[UserRaza].Fuerza;
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] =
@@ -162,10 +108,15 @@ void DotIO::loadUserStats2(int UserIndex, const std::string &Name, eRaza UserRaz
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Constitucion] =
             18 + ModRaza[UserRaza].Constitucion;
 
-    for (i = (1); i <= (NUMSKILLS); i++) {
-        UserList[UserIndex].Stats.UserSkills[i] = 100;
+    for (i = (1); i <= (NUMATRIBUTOS); i++) {
+        UserList[UserIndex].Stats.UserAtributosBackUP[i] = UserList[UserIndex].Stats.UserAtributos[i];
     }
 
+    for (i = (1); i <= (NUMSKILLS); i++) {
+        UserList[UserIndex].Stats.UserSkills[i] = 100;
+        UserList[UserIndex].Stats.EluSkills[i] = 0;
+        UserList[UserIndex].Stats.ExpSkills[i] = 0;
+    }
     UserList[UserIndex].Stats.SkillPts = 0;
 
 
@@ -219,17 +170,21 @@ void DotIO::loadUserStats2(int UserIndex, const std::string &Name, eRaza UserRaz
     UserList[UserIndex].Stats.MinHIT = 1;
 
     UserList[UserIndex].Stats.GLD = 0;
+    UserList[UserIndex].Stats.Banco = 0;
 
     UserList[UserIndex].Stats.Exp = 0;
     UserList[UserIndex].Stats.ELU = 300;
     UserList[UserIndex].Stats.ELV = 1;
+
+    UserList[UserIndex].Stats.UsuariosMatados = 0;
+    UserList[UserIndex].Stats.NPCsMuertos = 0;
 }
 
-void DotIO::loadUserInventoryItems(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                              const std::string &UserEmail,
-                              eCiudad Hogar, int Head) {
+void DotIO::loadUserInventoryItems(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo,
+                                   eClass UserClase,
+                                   const std::string &UserEmail,
+                                   eCiudad Hogar, int Head) {
     int i, Slot, LoopC;
-    /* '???????????????? INVENTARIO ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿ */
     bool IsPaladin;
 
     IsPaladin = UserClase == eClass_Paladin;
@@ -345,11 +300,14 @@ void DotIO::loadUserInventoryItems(int UserIndex, const std::string &Name, eRaza
 
     /* ' Total Items */
     UserList[UserIndex].Invent.NroItems = Slot;
+
+
 }
 
-void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                              const std::string &UserEmail,
-                              eCiudad Hogar, int Head) {
+void
+DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
+                         const std::string &UserEmail,
+                         eCiudad Hogar, int Head) {
     int i, LoopC;
 
     /* 'Obtiene el indice-objeto del arma */
@@ -414,7 +372,7 @@ void DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza User
     }
 }
 
-void DotIO::loadUserPosition(int UserIndex){
+void DotIO::loadUserPosition(int UserIndex) {
     UserList[UserIndex].Pos.Map = 1; //TODO
     UserList[UserIndex].Pos.X = 50; //TODO
     UserList[UserIndex].Pos.Y = 50; //TODO
