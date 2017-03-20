@@ -40,42 +40,8 @@ void DotIOInventory::initializeInventory() {
 
     setPotions();
     setWeapon();
-
-    /* ' Ropa (Newbie) */
+    setArmor();
     Slot = getFirstFreeSlotNumber();
-    switch (UserRaza) {
-        case eRaza_Humano:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 463;
-            break;
-
-        case eRaza_Elfo:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 464;
-            break;
-
-        case eRaza_Drow:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 465;
-            break;
-
-        case eRaza_Enano:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 466;
-            break;
-
-        case eRaza_Gnomo:
-            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 466;
-            break;
-
-        default:
-            break;
-    }
-
-    /* ' Equipo ropa */
-    UserList[UserIndex].Invent.Object[Slot].Amount = 1;
-    UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
-
-    UserList[UserIndex].Invent.ArmourEqpSlot = Slot;
-
-
-
 
 
 
@@ -141,8 +107,8 @@ void DotIOInventory::setWeapon() {
         case eClass_Druid:
             weapon = 366; // daga +3
             break;
-        case eClass_Bandit: //hacha de barbaro
-            weapon = 159;
+        case eClass_Bandit: //espada vikinga
+            weapon = 123;
             break;
         case eClass_Hunter:
             weapon = 665;
@@ -176,6 +142,10 @@ void DotIOInventory::setWeapon() {
     if (UserClase == eClass_Bard) {
         addItem(366); // flecha +3
     }
+
+    if ((UserClase == eClass_Bandit) || (UserClase == eClass_Thief)) {
+        addItem(1036); // guantes de lucha
+    }
 }
 
 void DotIOInventory::setHelmet() {
@@ -183,33 +153,51 @@ void DotIOInventory::setHelmet() {
 
 }
 
-void DotIOInventory::setArmor() {
-    int Slot = getFirstFreeSlotNumber();
+bool DotIOInventory::esAlto() {
+    return ((UserRaza != eRaza_Enano) && (UserRaza != eRaza_Gnomo));
+}
 
-//    switch (UserRaza) {
-//        case eRaza_Humano:
-//            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 463;
-//            break;
-//
-//        case eRaza_Elfo:
-//            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 464;
-//            break;
-//
-//        case eRaza_Drow:
-//            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 465;
-//            break;
-//
-//        case eRaza_Enano:
-//            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 466;
-//            break;
-//
-//        case eRaza_Gnomo:
-//            UserList[UserIndex].Invent.Object[Slot].ObjIndex = 466;
-//            break;
-//
-//        default:
-//            break;
-//    }
+void DotIOInventory::setArmor() {
+    int armor = 0;
+
+    switch (UserClase) {
+        case eClass_Mage: {
+            int tunica = 519; // tunica legendaria
+            int rand = RandomNumber(1, 10);
+            if (rand == 1) {
+                tunica = 614; // tunica de archimago
+            }
+            armor = esAlto() ? tunica : 932; // tunica legendaria (o tunica de archimago ) / Sotana de Gran Hechicero
+            break;
+        }
+        case eClass_Cleric:
+        case eClass_Paladin:
+        case eClass_Warrior:
+        case eClass_Bandit:
+            armor = esAlto() ? 195 : 243; // placas / placas
+            break;
+        case eClass_Assasin:
+            armor = esAlto() ? 356 : 854; // armadura de las sombras
+            break;
+        case eClass_Thief:
+            armor = esAlto() ? 890 : 913; // armadura de cuero de oso pardo / ropaje de ermitaño
+            break;
+        case eClass_Bard:
+        case eClass_Druid:
+            armor = esAlto() ? 519 : 939; // legendaria / Tunica de gala roja
+            break;
+        case eClass_Hunter:
+            armor = esAlto() ? 360 : 648; // armadura de cazador
+            break;
+        case eClass_Pirat:// Sombrero Pirata
+            armor = esAlto() ? 682 : 922; // cota de mallas / traje de Capitán Pirata
+            break;
+    }
+
+    int Slot = addItem(armor);
+
+    /* ' Equipo ropa */
+    UserList[UserIndex].Invent.ArmourEqpSlot = Slot;
 }
 
 

@@ -29,6 +29,7 @@ private:
 
     void setArmor();
 
+    bool esAlto();
     int UserIndex;
     std::string Name;
     eRaza UserRaza;
