@@ -62,6 +62,7 @@ void DotIOInventory::setPotions() {
     /* 'Pocion amarillas*/
     addItem(36);
 
+    /* 'Pocion verde*/
     if (UserClase != eClass_Mage) {
         addItem(39);
     }
@@ -100,7 +101,7 @@ void DotIOInventory::setWeapon() {
         case eClass_Hunter:
             weapon = 665;
             break;
-        case eClass_Pirat://Traje de Capitán Pirata // Alifafe de Pirata (E/G) // Sombrero Pirata
+        case eClass_Pirat:
             weapon = 125; //sable
             break;
     }
@@ -165,6 +166,7 @@ void DotIOInventory::setHelmet() {
 
     if (helmet > 0) {
         int Slot = addItem(helmet);
+        UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
         UserList[UserIndex].Invent.CascoEqpSlot = Slot;
     }
 
@@ -214,6 +216,7 @@ void DotIOInventory::setArmor() {
     int Slot = addItem(armor);
 
     /* ' Equipo ropa */
+    UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
     UserList[UserIndex].Invent.ArmourEqpSlot = Slot;
 }
 
@@ -242,6 +245,7 @@ void DotIOInventory::setShield() {
 
     if (shield > 0) {
         int Slot = addItem(shield);
+        UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
         UserList[UserIndex].Invent.EscudoEqpSlot = Slot;
     }
 }

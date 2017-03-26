@@ -196,6 +196,7 @@ DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza,
                          const std::string &UserEmail,
                          eCiudad Hogar, int Head) {
     int i, LoopC;
+    struct ObjData Obj;
 
     /* 'Obtiene el indice-objeto del arma */
     if (UserList[UserIndex].Invent.WeaponEqpSlot > 0) {
@@ -207,6 +208,9 @@ DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza,
 
     /* 'Obtiene el indice-objeto del armadura */
     if (UserList[UserIndex].Invent.ArmourEqpSlot > 0) {
+        Obj = ObjData[UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.ArmourEqpSlot].ObjIndex];
+        UserList[UserIndex].Char.body = Obj.Ropaje;
+
         UserList[UserIndex].Invent.ArmourEqpObjIndex =
                 UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.ArmourEqpSlot].ObjIndex;
         UserList[UserIndex].flags.Desnudo = 0;
@@ -218,12 +222,18 @@ DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza,
     if (UserList[UserIndex].Invent.EscudoEqpSlot > 0) {
         UserList[UserIndex].Invent.EscudoEqpObjIndex =
                 UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.EscudoEqpSlot].ObjIndex;
+
+        Obj = ObjData[UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.EscudoEqpSlot].ObjIndex];
+        UserList[UserIndex].Char.ShieldAnim = Obj.ShieldAnim;
     }
 
     /* 'Obtiene el indice-objeto del casco */
     if (UserList[UserIndex].Invent.CascoEqpSlot > 0) {
         UserList[UserIndex].Invent.CascoEqpObjIndex =
                 UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.CascoEqpSlot].ObjIndex;
+
+        Obj = ObjData[UserList[UserIndex].Invent.Object[UserList[UserIndex].Invent.CascoEqpSlot].ObjIndex];
+        UserList[UserIndex].Char.CascoAnim = Obj.CascoAnim;
     }
 
     /* 'Obtiene el indice-objeto barco */
@@ -265,7 +275,7 @@ void DotIO::updateUserPosition(int UserIndex) {
     UserList[UserIndex].Pos.Y = 50; //TODO
 }
 
-void DotIO::updateUserLevel(int UserIndex){
+void DotIO::updateUserLevel(int UserIndex) {
     UserList[UserIndex].Stats.Exp = 5679050;
     CheckUserLevel(UserIndex, false);
     UserList[UserIndex].Stats.MinMAN = UserList[UserIndex].Stats.MaxMAN;
