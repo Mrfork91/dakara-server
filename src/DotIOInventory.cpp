@@ -36,28 +36,14 @@ int DotIOInventory::addItem(int item) {
 void DotIOInventory::initializeInventory() {
 
     int i, Slot, LoopC;
-    bool IsPaladin;
 
     setPotions();
     setWeapon();
     setArmor();
+    setShield();
+    setFood();
+
     Slot = getFirstFreeSlotNumber();
-
-
-
-    /* ' Manzanas (Newbie) */
-    Slot = Slot + 1;
-    UserList[UserIndex].Invent.Object[Slot].ObjIndex = 467;
-    UserList[UserIndex].Invent.Object[Slot].Amount = 100;
-
-    /* ' Jugos (Nwbie) */
-    Slot = Slot + 1;
-    UserList[UserIndex].Invent.Object[Slot].ObjIndex = 468;
-    UserList[UserIndex].Invent.Object[Slot].Amount = 100;
-
-    /* ' Sin casco y escudo */
-    UserList[UserIndex].Char.ShieldAnim = NingunEscudo;
-    UserList[UserIndex].Char.CascoAnim = NingunCasco;
 
     /* ' Total Items */
     UserList[UserIndex].Invent.NroItems = getFirstFreeSlotNumber() - 1;
@@ -145,6 +131,7 @@ void DotIOInventory::setWeapon() {
 
     if ((UserClase == eClass_Bandit) || (UserClase == eClass_Thief)) {
         addItem(1036); // guantes de lucha
+        addItem(873); // guantes de hurto
     }
 }
 
@@ -200,6 +187,44 @@ void DotIOInventory::setArmor() {
     UserList[UserIndex].Invent.ArmourEqpSlot = Slot;
 }
 
+void DotIOInventory::setShield() {
+    int shield = 0;
+
+    switch (UserClase) {
+        case eClass_Paladin:
+        case eClass_Warrior:
+            shield = 130; // escudo de plata
+            break;
+        case eClass_Cleric:
+        case eClass_Bandit:
+            shield = 128; // escudo de hierro
+            break;
+        case eClass_Assasin:
+        case eClass_Hunter:
+        case eClass_Bard:
+            shield = 404; // escudo de tortuga
+            break;
+        case eClass_Druid:
+        case eClass_Thief:
+        case eClass_Pirat:
+            break;
+    }
+
+    if (shield > 0) {
+        int Slot = addItem(shield);
+        UserList[UserIndex].Invent.EscudoEqpSlot = Slot;
+    }
+}
+
+void DotIOInventory::setFood() {
+
+    /* ' Manzanas*/
+    addItem(1);
+
+    /* ' Agua */
+    addItem(43);
+
+}
 
 
 //empty switch

@@ -29,6 +29,10 @@ private:
 
     void setArmor();
 
+    void setFood();
+
+    void setShield();
+
     bool esAlto();
     int UserIndex;
     std::string Name;
