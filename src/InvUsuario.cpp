@@ -1212,9 +1212,9 @@ void UseInvItem(int UserIndex, int Slot) {
 		}
 
 		/* 'Quitamos del inv el item */
-		QuitarUserInvItem(UserIndex, Slot, 1);
+		//QuitarUserInvItem(UserIndex, Slot, 1);
 
-		UpdateUserInv(false, UserIndex, Slot);
+		//UpdateUserInv(false, UserIndex, Slot);
 
 		break;
 
@@ -1374,7 +1374,7 @@ void UseInvItem(int UserIndex, int Slot) {
 			}
 
 			/* 'Quitamos del inv el item */
-			QuitarUserInvItem(UserIndex, Slot, 1);
+			//QuitarUserInvItem(UserIndex, Slot, 1);
 
 			/* ' Los admin invisibles solo producen sonidos a si mismos */
 			if (UserList[UserIndex].flags.AdminInvisible == 1) {
@@ -1408,7 +1408,7 @@ void UseInvItem(int UserIndex, int Slot) {
 			}
 
 			/* 'Quitamos del inv el item */
-			QuitarUserInvItem(UserIndex, Slot, 1);
+			//QuitarUserInvItem(UserIndex, Slot, 1);
 
 			/* ' Los admin invisibles solo producen sonidos a si mismos */
 			if (UserList[UserIndex].flags.AdminInvisible == 1) {
@@ -1434,7 +1434,7 @@ void UseInvItem(int UserIndex, int Slot) {
 			}
 
 			/* 'Quitamos del inv el item */
-			QuitarUserInvItem(UserIndex, Slot, 1);
+			//QuitarUserInvItem(UserIndex, Slot, 1);
 
 			/* ' Los admin invisibles solo producen sonidos a si mismos */
 			if (UserList[UserIndex].flags.AdminInvisible == 1) {
@@ -1469,7 +1469,7 @@ void UseInvItem(int UserIndex, int Slot) {
 			}
 
 			/* 'Quitamos del inv el item */
-			QuitarUserInvItem(UserIndex, Slot, 1);
+			//QuitarUserInvItem(UserIndex, Slot, 1);
 
 			/* ' Los admin invisibles solo producen sonidos a si mismos */
 			if (UserList[UserIndex].flags.AdminInvisible == 1) {
@@ -1491,7 +1491,7 @@ void UseInvItem(int UserIndex, int Slot) {
 				WriteConsoleMsg(UserIndex, "Te has curado del envenenamiento.", FontTypeNames_FONTTYPE_INFO);
 			}
 			/* 'Quitamos del inv el item */
-			QuitarUserInvItem(UserIndex, Slot, 1);
+			//QuitarUserInvItem(UserIndex, Slot, 1);
 
 			/* ' Los admin invisibles solo producen sonidos a si mismos */
 			if (UserList[UserIndex].flags.AdminInvisible == 1) {
@@ -1509,7 +1509,7 @@ void UseInvItem(int UserIndex, int Slot) {
 
 		case 6:
 			if (UserTienePrivilegio(UserIndex, PlayerType_User)) {
-				QuitarUserInvItem(UserIndex, Slot, 1);
+				//QuitarUserInvItem(UserIndex, Slot, 1);
 				UserDie(UserIndex);
 				WriteConsoleMsg(UserIndex, "Sientes un gran mareo y pierdes el conocimiento.",
 						FontTypeNames_FONTTYPE_FIGHT);
@@ -1517,7 +1517,7 @@ void UseInvItem(int UserIndex, int Slot) {
 			break;
 		}
 		WriteUpdateUserStats(UserIndex);
-		UpdateUserInv(false, UserIndex, Slot);
+		//UpdateUserInv(false, UserIndex, Slot);
 		break;
 
 	case eOBJType_otBebidas:
@@ -1534,7 +1534,7 @@ void UseInvItem(int UserIndex, int Slot) {
 		WriteUpdateHungerAndThirst(UserIndex);
 
 		/* 'Quitamos del inv el item */
-		QuitarUserInvItem(UserIndex, Slot, 1);
+		//QuitarUserInvItem(UserIndex, Slot, 1);
 
 		/* ' Los admin invisibles solo producen sonidos a si mismos */
 		if (UserList[UserIndex].flags.AdminInvisible == 1) {
@@ -1545,7 +1545,7 @@ void UseInvItem(int UserIndex, int Slot) {
 					dakara::protocol::server::BuildPlayWave(SND_BEBER, UserList[UserIndex].Pos.X, UserList[UserIndex].Pos.Y));
 		}
 
-		UpdateUserInv(false, UserIndex, Slot);
+		//UpdateUserInv(false, UserIndex, Slot);
 
 		break;
 

@@ -124,11 +124,20 @@ void DotIOInventory::setWeapon() {
         /* ' Equipo flechas */
         UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
         UserList[UserIndex].Invent.MunicionEqpSlot = Slot;
-        addItem(365); //daga +3
+        addItem(365); //daga +2
 
     }
     if (UserClase == eClass_Bard) {
-        addItem(366); // flecha +3
+        Slot = addItem(1049); //laud magico
+        UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
+        UserList[UserIndex].Invent.AnilloEqpSlot = Slot;
+        addItem(366); // daga +3
+    }
+
+    if (UserClase == eClass_Druid) {
+        Slot = addItem(1050); //flauta elfica
+        UserList[UserIndex].Invent.Object[Slot].Equipped = 1;
+        UserList[UserIndex].Invent.AnilloEqpSlot = Slot;
     }
 
     if ((UserClase == eClass_Bandit) || (UserClase == eClass_Thief)) {
