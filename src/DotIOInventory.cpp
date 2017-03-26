@@ -41,6 +41,7 @@ void DotIOInventory::initializeInventory() {
     setWeapon();
     setArmor();
     setShield();
+    setHelmet();
     setFood();
 
     Slot = getFirstFreeSlotNumber();
@@ -136,7 +137,36 @@ void DotIOInventory::setWeapon() {
 }
 
 void DotIOInventory::setHelmet() {
-    int Slot = getFirstFreeSlotNumber();
+    int helmet = 0;
+
+    switch (UserClase) {
+        case eClass_Mage:
+            helmet = 662; // sombrero de mago
+            break;
+        case eClass_Paladin:
+        case eClass_Warrior:
+        case eClass_Cleric:
+        case eClass_Bandit:
+        case eClass_Assasin:
+        case eClass_Hunter:
+            helmet = 405; // casco de plata
+            break;
+        case eClass_Thief:
+        case eClass_Bard:
+            helmet = 132; // casco de hierro
+            break;
+        case eClass_Druid:
+            helmet = 1003; // casco de oso
+            break;
+        case eClass_Pirat:
+            helmet = 1010; // sombrero
+            break;
+    }
+
+    if (helmet > 0) {
+        int Slot = addItem(helmet);
+        UserList[UserIndex].Invent.CascoEqpSlot = Slot;
+    }
 
 }
 
@@ -177,7 +207,7 @@ void DotIOInventory::setArmor() {
             armor = esAlto() ? 360 : 648; // armadura de cazador
             break;
         case eClass_Pirat:// Sombrero Pirata
-            armor = esAlto() ? 682 : 922; // cota de mallas / traje de Capitán Pirata
+            armor = esAlto() ? 359 : 922; // cota de mallas / traje de Capitán Pirata
             break;
     }
 
