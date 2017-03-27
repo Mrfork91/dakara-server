@@ -69,7 +69,7 @@ void DotIO::loadUserHechizos() {
 }
 
 void DotIO::loadUserReputacion() {
-    UserList[UserIndex].Reputacion.AsesinoRep = 0;
+    UserList[UserIndex].Reputacion.AsesinoRep = 2000;
     UserList[UserIndex].Reputacion.BandidoRep = 0;
     UserList[UserIndex].Reputacion.BurguesRep = 0;
     UserList[UserIndex].Reputacion.LadronesRep = 0;
