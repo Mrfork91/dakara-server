@@ -5,6 +5,7 @@
 #include "Crypto.h"
 #include "DotIO.h"
 #include "DotIOInventory.h"
+#include "Matematicas.h"
 
 DotIO::DotIO(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo,
                                eClass UserClase,
@@ -60,7 +61,7 @@ void DotIO::loadUserHechizos() {
     addSpell(23); // descargar electrica
     addSpell(15); // tormenta
     addSpell(8); // misil magico
-    addSpell(14); // invisibilidad
+    //addSpell(14); // invisibilidad
     addSpell(5); // curar heridas graves
     addSpell(18); // celeridad
     addSpell(20); // fuerza
@@ -294,9 +295,22 @@ void DotIO::loadUserInventory() {
 }
 
 void DotIO::updateUserPosition() {
-    UserList[UserIndex].Pos.Map = 1; //TODO
-    UserList[UserIndex].Pos.X = 50; //TODO
-    UserList[UserIndex].Pos.Y = 50; //TODO
+    int map = 272;
+    int y;
+    int entrada = RandomNumber(0,2);
+    if (entrada == 0){
+        y  = RandomNumber(66,70);
+    }
+    else if (entrada == 1){
+        y  = RandomNumber(45,49);
+    }
+    else if (entrada == 2){
+        y  = RandomNumber(24,28);
+    }
+    int x = RandomNumber(72,82);
+    UserList[UserIndex].Pos.Map = map;
+    UserList[UserIndex].Pos.X = x;
+    UserList[UserIndex].Pos.Y = y;
 }
 
 void DotIO::updateUserLevel() {
