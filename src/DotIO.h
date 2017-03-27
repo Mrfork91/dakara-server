@@ -35,6 +35,8 @@ private:
     void updateUserPosition();
     void updateUserLevel();
 
+    void addSpell(int number);
+
     int UserIndex;
     std::string Name;
     eRaza UserRaza;

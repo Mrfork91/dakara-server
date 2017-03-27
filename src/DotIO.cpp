@@ -39,17 +39,32 @@ void DotIO::setupUser() {
     int i;
 }
 
+void DotIO::addSpell(int number) {
+    int lastSlot = 16;
+    while (UserList[UserIndex].Stats.UserHechizos[lastSlot] != 0) {
+        lastSlot--;
+    }
+    UserList[UserIndex].Stats.UserHechizos[lastSlot] = number;
+}
+
 void DotIO::loadUserHechizos() {
 
-
-    if (UserClase == eClass_Mage || UserClase == eClass_Cleric || UserClase == eClass_Druid
-        || UserClase == eClass_Bard || UserClase == eClass_Assasin) {
-        UserList[UserIndex].Stats.UserHechizos[1] = 2;
-
-        if (UserClase == eClass_Druid) {
-            UserList[UserIndex].Stats.UserHechizos[2] = 46;
-        }
+    if (UserClase == eClass_Thief || UserClase == eClass_Warrior || UserClase == eClass_Hunter){
+        return;
     }
+    addSpell(10); // remover paralisis
+    addSpell(24); // inmovilizar
+    if (UserClase == eClass_Cleric || UserClase == eClass_Mage || UserClase == eClass_Bard || UserClase == eClass_Druid){
+        addSpell(25); // apocalipsis
+    }
+    addSpell(23); // descargar electrica
+    addSpell(15); // tormenta
+    addSpell(8); // misil magico
+    addSpell(14); // invisibilidad
+    addSpell(5); // curar heridas graves
+    addSpell(18); // celeridad
+    addSpell(20); // fuerza
+
 }
 
 void DotIO::loadUserReputacion() {
