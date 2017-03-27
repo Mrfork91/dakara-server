@@ -269,7 +269,8 @@ void ConnectNewUser(int UserIndex, const std::string& Name, const std::string& P
 	//LogMain("Se ha creado el personaje " + Name + " desde IP=" + UserList[UserIndex].ip);
 
 	/* 'Open User */
-    DotIO::setupUser(UserIndex,Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+	DotIO dotIO(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+	dotIO.setupUser();
 	ConnectUser(UserIndex, Name, Password);
 
 }

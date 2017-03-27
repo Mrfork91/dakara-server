@@ -6,25 +6,53 @@
 #include "DotIO.h"
 #include "DotIOInventory.h"
 
-void DotIO::setupUser(int UserIndex, const std::string &Name, eRaza UserRaza,
-                      eGenero UserSexo, eClass UserClase, const std::string &UserEmail, eCiudad Hogar, int Head) {
-    loadUserIni(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
-    loadUserReputacion(UserIndex);
-    loadUserFlags(UserIndex);
+DotIO::DotIO(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo,
+                               eClass UserClase,
+                               const std::string &UserEmail,
+                               eCiudad Hogar, int Head) {
+    this->UserIndex = UserIndex;
+    this->Name = Name;
+    this->UserRaza = UserRaza;
+    this->UserSexo = UserSexo;
+    this->UserClase = UserClase;
+    this->UserEmail = UserEmail;
+    this->Hogar = Hogar;
+    this->Head = Head;
+}
 
-    loadUserStats(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+void DotIO::setupUser() {
+    loadUserIni();
+    loadUserReputacion();
+    loadUserFlags();
 
-    loadUserInventoryItems(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head); // << ITEMS
+    loadUserStats();
 
-    loadUserInventory(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
+    loadUserInventoryItems(); // << ITEMS
 
-    updateUserPosition(UserIndex);
-    updateUserLevel(UserIndex);
+    loadUserInventory();
+
+    loadUserHechizos();
+
+    updateUserPosition();
+    updateUserLevel();
 
     int i;
 }
 
-void DotIO::loadUserReputacion(int UserIndex) {
+void DotIO::loadUserHechizos() {
+
+
+    if (UserClase == eClass_Mage || UserClase == eClass_Cleric || UserClase == eClass_Druid
+        || UserClase == eClass_Bard || UserClase == eClass_Assasin) {
+        UserList[UserIndex].Stats.UserHechizos[1] = 2;
+
+        if (UserClase == eClass_Druid) {
+            UserList[UserIndex].Stats.UserHechizos[2] = 46;
+        }
+    }
+}
+
+void DotIO::loadUserReputacion() {
     UserList[UserIndex].Reputacion.AsesinoRep = 0;
     UserList[UserIndex].Reputacion.BandidoRep = 0;
     UserList[UserIndex].Reputacion.BurguesRep = 0;
@@ -34,7 +62,7 @@ void DotIO::loadUserReputacion(int UserIndex) {
     UserList[UserIndex].Reputacion.Promedio = 30 / 6;
 }
 
-void DotIO::loadUserFlags(int UserIndex) {
+void DotIO::loadUserFlags() {
     UserList[UserIndex].flags.Muerto = 0;
     UserList[UserIndex].flags.Escondido = 0;
     UserList[UserIndex].flags.Hambre = 0;
@@ -46,9 +74,7 @@ void DotIO::loadUserFlags(int UserIndex) {
     UserList[UserIndex].flags.lastMap = 0;
 }
 
-void DotIO::loadUserIni(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                        const std::string &UserEmail,
-                        eCiudad Hogar, int Head) {
+void DotIO::loadUserIni() {
     int LoopC;
 
     UserList[UserIndex].Name = Name;
@@ -96,9 +122,7 @@ void DotIO::loadUserIni(int UserIndex, const std::string &Name, eRaza UserRaza, 
     }
 }
 
-void DotIO::loadUserStats(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                          const std::string &UserEmail,
-                          eCiudad Hogar, int Head) {
+void DotIO::loadUserStats() {
     int i, LoopC;
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] =
             18 + ModRaza[UserRaza].Fuerza;
@@ -160,15 +184,6 @@ void DotIO::loadUserStats(int UserIndex, const std::string &Name, eRaza UserRaza
         UserList[UserIndex].Stats.MinMAN = 0;
     }
 
-    if (UserClase == eClass_Mage || UserClase == eClass_Cleric || UserClase == eClass_Druid
-        || UserClase == eClass_Bard || UserClase == eClass_Assasin) {
-        UserList[UserIndex].Stats.UserHechizos[1] = 2;
-
-        if (UserClase == eClass_Druid) {
-            UserList[UserIndex].Stats.UserHechizos[2] = 46;
-        }
-    }
-
     UserList[UserIndex].Stats.MaxHIT = 2;
     UserList[UserIndex].Stats.MinHIT = 1;
 
@@ -183,18 +198,12 @@ void DotIO::loadUserStats(int UserIndex, const std::string &Name, eRaza UserRaza
     UserList[UserIndex].Stats.NPCsMuertos = 0;
 }
 
-void DotIO::loadUserInventoryItems(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo,
-                                   eClass UserClase,
-                                   const std::string &UserEmail,
-                                   eCiudad Hogar, int Head) {
+void DotIO::loadUserInventoryItems() {
     DotIOInventory inventory(UserIndex, Name, UserRaza, UserSexo, UserClase, UserEmail, Hogar, Head);
     inventory.initializeInventory();
 }
 
-void
-DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                         const std::string &UserEmail,
-                         eCiudad Hogar, int Head) {
+void DotIO::loadUserInventory() {
     int i, LoopC;
     struct ObjData Obj;
 
@@ -269,13 +278,13 @@ DotIO::loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza,
     }
 }
 
-void DotIO::updateUserPosition(int UserIndex) {
+void DotIO::updateUserPosition() {
     UserList[UserIndex].Pos.Map = 1; //TODO
     UserList[UserIndex].Pos.X = 50; //TODO
     UserList[UserIndex].Pos.Y = 50; //TODO
 }
 
-void DotIO::updateUserLevel(int UserIndex) {
+void DotIO::updateUserLevel() {
     UserList[UserIndex].Stats.Exp = 5679050;
     CheckUserLevel(UserIndex, false);
     UserList[UserIndex].Stats.MinMAN = UserList[UserIndex].Stats.MaxMAN;

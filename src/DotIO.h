@@ -8,38 +8,41 @@
 
 class DotIO {
 public:
-    static void
-    setupUser(int userIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-              const std::string &UserEmail,
-              eCiudad Hogar, int Head);
+    DotIO(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo,
+                   eClass UserClase,
+                   const std::string &UserEmail,
+                   eCiudad Hogar, int Head);
+
+    void setupUser();
 
 private:
-    static void
-    loadUserStats(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                  const std::string &UserEmail,
-                  eCiudad Hogar, int Head);
 
-    static void loadUserReputacion(int userIndex);
+    void loadUserHechizos();
+
+    void loadUserStats();
+
+    void loadUserReputacion();
 
 
-    static void loadUserFlags(int UserIndex);
+    void loadUserFlags();
 
-    static void loadUserIni(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                            const std::string &UserEmail,
-                            eCiudad Hogar, int Head);
+    void loadUserIni();
 
-    static void
-    loadUserInventoryItems(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                           const std::string &UserEmail,
-                           eCiudad Hogar, int Head);
+    void loadUserInventoryItems();
 
-    static void
-    loadUserInventory(int UserIndex, const std::string &Name, eRaza UserRaza, eGenero UserSexo, eClass UserClase,
-                      const std::string &UserEmail,
-                      eCiudad Hogar, int Head);
+    void loadUserInventory();
 
-    static void updateUserPosition(int UserIndex);
-    static void updateUserLevel(int UserIndex);
+    void updateUserPosition();
+    void updateUserLevel();
+
+    int UserIndex;
+    std::string Name;
+    eRaza UserRaza;
+    eGenero UserSexo;
+    eClass UserClase;
+    std::string UserEmail;
+    eCiudad Hogar;
+    int Head;
 };
 
 
