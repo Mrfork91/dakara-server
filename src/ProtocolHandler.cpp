@@ -1110,7 +1110,7 @@ void DakaraClientPacketHandler::handleDrop(Drop* p) { (void)p;
 	/* 'Last Modification: 07/25/09 */
 	/* '07/25/09: Marco - Agregué un checkeo para patear a los usuarios que tiran items mientras comercian. */
 	/* '*************************************************** */
-
+	return;
 	int Slot;
 	int Amount;
 
