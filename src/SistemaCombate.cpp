@@ -2391,7 +2391,7 @@ void LanzarProyectil(int UserIndex, int X, int Y) {
 		}
 
 		/* 'Take 1 knife/arrow away */
-		QuitarUserInvItem(UserIndex, Slot, 1);
+		//QuitarUserInvItem(UserIndex, Slot, 1);
 		UpdateUserInv(false, UserIndex, Slot);
 
 	}
