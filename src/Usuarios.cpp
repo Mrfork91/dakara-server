@@ -1570,15 +1570,15 @@ void UserDie(int UserIndex) {
 	UserList[UserIndex].Counters.Trabajando = 0;
 
 	/* ' No se activa en arenas */
-	if (TriggerZonaPelea(UserIndex, UserIndex) != eTrigger6_TRIGGER6_PERMITE) {
+	//if (TriggerZonaPelea(UserIndex, UserIndex) != eTrigger6_TRIGGER6_PERMITE) {
 		UserList[UserIndex].flags.SeguroResu = true;
 		/* 'Call WriteResuscitationSafeOn(UserIndex) */
 		WriteMultiMessage(UserIndex, eMessages_ResuscitationSafeOn);
-	} else {
-		UserList[UserIndex].flags.SeguroResu = false;
-		/* 'Call WriteResuscitationSafeOff(UserIndex) */
-		WriteMultiMessage(UserIndex, eMessages_ResuscitationSafeOff);
-	}
+//	} else {
+//		UserList[UserIndex].flags.SeguroResu = false;
+//		/* 'Call WriteResuscitationSafeOff(UserIndex) */
+//		WriteMultiMessage(UserIndex, eMessages_ResuscitationSafeOff);
+//	}
 
 	aN = UserList[UserIndex].flags.AtacadoPorNpc;
 	if (aN > 0) {
@@ -1639,14 +1639,14 @@ void UserDie(int UserIndex) {
 		SetInvisible(UserIndex, UserList[UserIndex].Char.CharIndex, false);
 	}
 
-	if (TriggerZonaPelea(UserIndex, UserIndex) != eTrigger6_TRIGGER6_PERMITE) {
-		/* ' << Si es newbie no pierde el inventario >> */
-		if (!EsNewbie(UserIndex)) {
-			TirarTodo(UserIndex);
-		} else {
-			TirarTodosLosItemsNoNewbies(UserIndex);
-		}
-	}
+//	if (TriggerZonaPelea(UserIndex, UserIndex) != eTrigger6_TRIGGER6_PERMITE) {
+//		/* ' << Si es newbie no pierde el inventario >> */
+//		if (!EsNewbie(UserIndex)) {
+//			TirarTodo(UserIndex);
+//		} else {
+//			TirarTodosLosItemsNoNewbies(UserIndex);
+//		}
+//	}
 
 	/* ' DESEQUIPA TODOS LOS OBJETOS */
 	/* 'desequipar armadura */
