@@ -135,6 +135,7 @@ using namespace dakara::protocol::clientgm;
 /* ' */
 
 void DakaraClientPacketHandler::handleHome(Home* p) { (void)p;
+	return;
 	/* '*************************************************** */
 	/* 'Author: Budi */
 	/* 'Creation Date: 06/01/2010 */
