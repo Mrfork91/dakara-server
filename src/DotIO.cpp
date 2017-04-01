@@ -314,7 +314,7 @@ void DotIO::updateUserPosition() {
 }
 
 void DotIO::updateUserLevel() {
-    UserList[UserIndex].Stats.Exp = 5679050;
+    UserList[UserIndex].Stats.Exp = 47980556;
     CheckUserLevel(UserIndex, false);
     UserList[UserIndex].Stats.MinMAN = UserList[UserIndex].Stats.MaxMAN;
     UserList[UserIndex].Stats.MinSta = UserList[UserIndex].Stats.MaxSta;

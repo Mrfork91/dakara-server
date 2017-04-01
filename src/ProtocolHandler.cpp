@@ -1601,7 +1601,7 @@ void DakaraClientPacketHandler::handleWorkLeftClick(WorkLeftClick* p) { (void)p;
 
 	case eSkill_Robar:
 		/* 'Does the map allow us to steal here? */
-		if (MapInfo[UserList[UserIndex].Pos.Map].Pk) {
+//		if (MapInfo[UserList[UserIndex].Pos.Map].Pk) {
 
 			/* 'Check interval */
 			if (!IntervaloPermiteTrabajar(UserIndex)) {
@@ -1644,9 +1644,9 @@ void DakaraClientPacketHandler::handleWorkLeftClick(WorkLeftClick* p) { (void)p;
 			} else {
 				WriteConsoleMsg(UserIndex, "¡No hay a quien robarle!", FontTypeNames_FONTTYPE_INFO);
 			}
-		} else {
-			WriteConsoleMsg(UserIndex, "¡No puedes robar en zonas seguras!", FontTypeNames_FONTTYPE_INFO);
-		}
+//		} else {
+//			WriteConsoleMsg(UserIndex, "¡No puedes robar en zonas seguras!", FontTypeNames_FONTTYPE_INFO);
+//		}
 
 		break;
 

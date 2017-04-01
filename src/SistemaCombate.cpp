@@ -1618,38 +1618,38 @@ bool PuedeAtacar(int AttackerIndex, int VictimIndex) {
 		}
 	}
 
-	/* 'Estas en un Mapa Seguro? */
-	if (MapInfo[UserList[VictimIndex].Pos.Map].Pk == false) {
-		if (esArmada(AttackerIndex)) {
-			if (UserList[AttackerIndex].Faccion.RecompensasReal > 11) {
-				if (UserList[VictimIndex].Pos.Map == 58 || UserList[VictimIndex].Pos.Map == 59
-						|| UserList[VictimIndex].Pos.Map == 60) {
-					WriteConsoleMsg(VictimIndex,
-							"¡Huye de la ciudad! Estás siendo atacado y no podrás defenderte.",
-							FontTypeNames_FONTTYPE_WARNING);
-					/* 'Beneficio de Armadas que atacan en su ciudad. */
-					retval = true;
-					return retval;
-				}
-			}
-		}
-		if (esCaos(AttackerIndex)) {
-			if (UserList[AttackerIndex].Faccion.RecompensasCaos > 11) {
-				if (UserList[VictimIndex].Pos.Map == 151 || UserList[VictimIndex].Pos.Map == 156) {
-					WriteConsoleMsg(VictimIndex,
-							"¡Huye de la ciudad! Estás siendo atacado y no podrás defenderte.",
-							FontTypeNames_FONTTYPE_WARNING);
-					/* 'Beneficio de Caos que atacan en su ciudad. */
-					retval = true;
-					return retval;
-				}
-			}
-		}
-		WriteConsoleMsg(AttackerIndex, "Esta es una zona segura, aquí no puedes atacar a otros usuarios.",
-				FontTypeNames_FONTTYPE_WARNING);
-		retval = false;
-		return retval;
-	}
+//	/* 'Estas en un Mapa Seguro? */
+//	if (MapInfo[UserList[VictimIndex].Pos.Map].Pk == false) {
+//		if (esArmada(AttackerIndex)) {
+//			if (UserList[AttackerIndex].Faccion.RecompensasReal > 11) {
+//				if (UserList[VictimIndex].Pos.Map == 58 || UserList[VictimIndex].Pos.Map == 59
+//						|| UserList[VictimIndex].Pos.Map == 60) {
+//					WriteConsoleMsg(VictimIndex,
+//							"¡Huye de la ciudad! Estás siendo atacado y no podrás defenderte.",
+//							FontTypeNames_FONTTYPE_WARNING);
+//					/* 'Beneficio de Armadas que atacan en su ciudad. */
+//					retval = true;
+//					return retval;
+//				}
+//			}
+//		}
+//		if (esCaos(AttackerIndex)) {
+//			if (UserList[AttackerIndex].Faccion.RecompensasCaos > 11) {
+//				if (UserList[VictimIndex].Pos.Map == 151 || UserList[VictimIndex].Pos.Map == 156) {
+//					WriteConsoleMsg(VictimIndex,
+//							"¡Huye de la ciudad! Estás siendo atacado y no podrás defenderte.",
+//							FontTypeNames_FONTTYPE_WARNING);
+//					/* 'Beneficio de Caos que atacan en su ciudad. */
+//					retval = true;
+//					return retval;
+//				}
+//			}
+//		}
+//		WriteConsoleMsg(AttackerIndex, "Esta es una zona segura, aquí no puedes atacar a otros usuarios.",
+//				FontTypeNames_FONTTYPE_WARNING);
+//		retval = false;
+//		return retval;
+//	}
 
 	/* 'Estas atacando desde un trigger seguro? o tu victima esta en uno asi? */
 	if (MapData[UserList[VictimIndex].Pos.Map][UserList[VictimIndex].Pos.X][UserList[VictimIndex].Pos.Y].trigger
