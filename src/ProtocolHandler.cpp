@@ -5115,7 +5115,9 @@ void DakaraClientPacketHandler::handleGuildFundate(GuildFundate* p) { (void)p;
 	/* 'Last Modification: 14/12/2009 */
 	/* ' */
 	/* '*************************************************** */
-
+    WriteConsoleMsg(UserIndex, "Clanes deshabilitados en .io",
+                    FontTypeNames_FONTTYPE_INFOBOLD);
+    return;
 	if (HasFound(UserList[UserIndex].Name)) {
 		WriteConsoleMsg(UserIndex, "¡Ya has fundado un clan, no puedes fundar otro!",
 				FontTypeNames_FONTTYPE_INFOBOLD);
