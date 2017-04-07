@@ -59,14 +59,13 @@ void DotIOInventory::setPotions() {
         addItem(37);
     }
 
-    /* 'Pocion amarillas*/
-    addItem(36);
-
     /* 'Pocion verde*/
     if (UserClase != eClass_Mage) {
         addItem(39);
     }
 
+    /* 'Pocion amarillas*/
+    addItem(36);
 }
 
 void DotIOInventory::setWeapon() {
