@@ -121,21 +121,21 @@ void DakaraSocketEvents::onSocketNew(dakara::Socket* s) {
 
 		std::string ip(s->getIP());
 
-		if (BanIpBuscar(ip)) {
-			s->close(true);
-			return;
-		}
-
-		if (!IpSecurityAceptarNuevaConexion(ip)) {
-			s->close(true);
-			return;
-		}
-
-		if (IPSecuritySuperaLimiteConexiones(ip)) {
-			IpRestarConexion(ip);
-			s->close(true);
-			return;
-		}
+//		if (BanIpBuscar(ip)) {
+//			s->close(true);
+//			return;
+//		}
+//
+//		if (!IpSecurityAceptarNuevaConexion(ip)) {
+//			s->close(true);
+//			return;
+//		}
+//
+//		if (IPSecuritySuperaLimiteConexiones(ip)) {
+//			IpRestarConexion(ip);
+//			s->close(true);
+//			return;
+//		}
 
 		UserList[UserIndex].incomingData.reset(new clsByteQueue());
 		UserList[UserIndex].outgoingData.reset(new clsByteQueue());
