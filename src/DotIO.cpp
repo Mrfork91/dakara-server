@@ -41,7 +41,7 @@ void DotIO::setupUser() {
 }
 
 void DotIO::addSpell(int number) {
-    int lastSlot = 16;
+    int lastSlot = 35;
     while (UserList[UserIndex].Stats.UserHechizos[lastSlot] != 0) {
         lastSlot--;
     }
