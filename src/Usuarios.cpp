@@ -2238,7 +2238,7 @@ void CerrarUserIndexIniciar(int UserIndex) {
 				/* ' Para no repetir mensajes */
 				if (!HiddenPirat) {
 					if (UserIndexSocketValido(UserIndex)) {
-						WriteConsoleMsg(UserIndex, "Has vuelto a ser visible.", FontTypeNames_FONTTYPE_INFO);
+						WriteConsoleMsg(UserIndex, "You are no longer hidden.", FontTypeNames_FONTTYPE_INFO);
 					}
 				}
 
@@ -2257,8 +2257,8 @@ void CerrarUserIndexIniciar(int UserIndex) {
 			}
 
 			WriteConsoleMsg(UserIndex,
-					"Cerrando...Se cerrará el juego en " + vb6::CStr(UserList[UserIndex].Counters.Salir)
-							+ " segundos...", FontTypeNames_FONTTYPE_INFO);
+					"Closing...The game will close in " + vb6::CStr(UserList[UserIndex].Counters.Salir)
+							+ " seconds...", FontTypeNames_FONTTYPE_INFO);
 		}
 	}
 }

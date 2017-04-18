@@ -1115,10 +1115,10 @@ void LookatTile(int UserIndex, int Map, int X, int Y) {
 							}
 
 						} else if (criminal(TempCharIndex)) {
-							Stat = Stat + " <CRIMINAL>";
+//							Stat = Stat + " <CRIMINAL>";
 							ft = FontTypeNames_FONTTYPE_FIGHT;
 						} else {
-							Stat = Stat + " <CIUDADANO>";
+//							Stat = Stat + " <CIUDADANO>";
 							ft = FontTypeNames_FONTTYPE_CITIZEN;
 						}
 					}

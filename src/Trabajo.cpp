@@ -2200,9 +2200,9 @@ void DoApunalar(int UserIndex, int VictimNpcIndex, int VictimUserIndex, int dano
 			}
 
 			UserList[VictimUserIndex].Stats.MinHp = UserList[VictimUserIndex].Stats.MinHp - dano;
-			WriteConsoleMsg(UserIndex, "Has apunalado a " + UserList[VictimUserIndex].Name + " por " + vb6::CStr(dano),
+			WriteConsoleMsg(UserIndex, "You have stabbed " + UserList[VictimUserIndex].Name + " for " + vb6::CStr(dano)+ " extra points of damage",
 					FontTypeNames_FONTTYPE_FIGHT);
-			WriteConsoleMsg(VictimUserIndex, "Te ha apunalado " + UserList[UserIndex].Name + " por " + vb6::CStr(dano),
+			WriteConsoleMsg(VictimUserIndex, "has stabbed you " + UserList[UserIndex].Name + " for " + vb6::CStr(dano)+ " extra points of damage",
 					FontTypeNames_FONTTYPE_FIGHT);
 
 			FlushBuffer(VictimUserIndex);
@@ -2216,7 +2216,7 @@ void DoApunalar(int UserIndex, int VictimNpcIndex, int VictimUserIndex, int dano
 
 		SubirSkill(UserIndex, eSkill_Apunalar, true);
 	} else {
-		WriteConsoleMsg(UserIndex, "¡No has logrado apunalar a tu enemigo!", FontTypeNames_FONTTYPE_FIGHT);
+		//WriteConsoleMsg(UserIndex, "¡No has logrado apunalar a tu enemigo!", FontTypeNames_FONTTYPE_FIGHT);
 		SubirSkill(UserIndex, eSkill_Apunalar, false);
 	}
 

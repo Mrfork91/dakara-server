@@ -428,7 +428,7 @@ void DecirPalabrasMagicas(std::string SpellWords, int UserIndex) {
 			UserList[UserIndex].Counters.TiempoOculto = 0;
 
 			if (UserList[UserIndex].flags.invisible == 0) {
-				WriteConsoleMsg(UserIndex, "Has vuelto a ser visible.", FontTypeNames_FONTTYPE_INFO);
+				WriteConsoleMsg(UserIndex, "You are no longer hidden.", FontTypeNames_FONTTYPE_INFO);
 				SetInvisible(UserIndex, UserList[UserIndex].Char.CharIndex, false);
 			}
 		}
@@ -1729,7 +1729,7 @@ void HechizoPropNPC(int SpellIndex, int NpcIndex, int UserIndex, bool & HechizoC
 		}
 
 		Npclist[NpcIndex].Stats.MinHp = Npclist[NpcIndex].Stats.MinHp - dano;
-		WriteConsoleMsg(UserIndex, "¡Le has quitado " + vb6::CStr(dano) + " puntos de vida a la criatura!",
+		WriteConsoleMsg(UserIndex, "¡You have dealt " + vb6::CStr(dano) + " points of damage!",
 				FontTypeNames_FONTTYPE_FIGHT);
 		CalcularDarExp(UserIndex, NpcIndex, dano);
 
@@ -2088,7 +2088,7 @@ bool HechizoPropUsuario(int UserIndex) {
 					UserList[UserIndex].Name + " te ha restaurado " + vb6::CStr(dano) + " puntos de vida.",
 					FontTypeNames_FONTTYPE_FIGHT);
 		} else {
-			WriteConsoleMsg(UserIndex, "Te has restaurado " + vb6::CStr(dano) + " puntos de vida.",
+			WriteConsoleMsg(UserIndex, "You have restored " + vb6::CStr(dano) + " healthpoints.",
 					FontTypeNames_FONTTYPE_FIGHT);
 		}
 
@@ -2156,9 +2156,9 @@ bool HechizoPropUsuario(int UserIndex) {
 		WriteUpdateHP(TargetIndex);
 
 		WriteConsoleMsg(UserIndex,
-				"Le has quitado " + vb6::CStr(dano) + " puntos de vida a " + UserList[TargetIndex].Name + ".",
+				"You have dealt " + vb6::CStr(dano) + " points of damage to " + UserList[TargetIndex].Name + ".",
 				FontTypeNames_FONTTYPE_FIGHT);
-		WriteConsoleMsg(TargetIndex, UserList[UserIndex].Name + " te ha quitado " + vb6::CStr(dano) + " puntos de vida.",
+		WriteConsoleMsg(TargetIndex, UserList[UserIndex].Name + " has dealt " + vb6::CStr(dano) + " points of damage.",
 				FontTypeNames_FONTTYPE_FIGHT);
 
 		/* 'Muere */

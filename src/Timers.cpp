@@ -189,8 +189,8 @@ void AutoSave_Timer() {
 
 		/* ' Desactiva */
 		if (tmpHappyHour == 1) {
-			SendData(SendTarget_ToAll, 0,
-					dakara::protocol::server::BuildConsoleMsg("¡Ha concluido la Happy Hour!", FontTypeNames_FONTTYPE_DIOS));
+//			SendData(SendTarget_ToAll, 0,
+//					dakara::protocol::server::BuildConsoleMsg("¡Ha concluido la Happy Hour!", FontTypeNames_FONTTYPE_DIOS));
 
 			HappyHourActivated = false;
 

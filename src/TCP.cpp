@@ -957,7 +957,7 @@ void SendMOTD(int UserIndex) {
 
 	int j;
 
-	WriteGuildChat(UserIndex, "Mensajes de entrada:");
+	//WriteGuildChat(UserIndex, "Mensajes de entrada:");
 	for (j = (1); j <= (int)MOTD.ubound(); j++) {
 		WriteGuildChat(UserIndex, MOTD[j].texto);
 	}

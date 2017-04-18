@@ -352,7 +352,7 @@ void DakaraClientPacketHandler::handleTalk(Talk* p) { (void)p;
 		} else {
 			if (UserList[UserIndex].flags.invisible == 0) {
 				SetInvisible(UserIndex, UserList[UserIndex].Char.CharIndex, false);
-				WriteConsoleMsg(UserIndex, "¡Has vuelto a ser visible!", FontTypeNames_FONTTYPE_INFO);
+				WriteConsoleMsg(UserIndex, "¡You are no longer hidden!", FontTypeNames_FONTTYPE_INFO);
 			}
 		}
 	}
@@ -419,7 +419,7 @@ void DakaraClientPacketHandler::handleYell(Yell* p) { (void)p;
 		} else {
 			if (UserList[UserIndex].flags.invisible == 0) {
 				SetInvisible(UserIndex, UserList[UserIndex].Char.CharIndex, false);
-				WriteConsoleMsg(UserIndex, "¡Has vuelto a ser visible!", FontTypeNames_FONTTYPE_INFO);
+				WriteConsoleMsg(UserIndex, "¡You are no longer hidden!", FontTypeNames_FONTTYPE_INFO);
 			}
 		}
 	}
@@ -697,7 +697,7 @@ void DakaraClientPacketHandler::handleWalk(Walk* p) { (void)p;
 			} else {
 				/* 'If not under a spell effect, show char */
 				if (UserList[UserIndex].flags.invisible == 0) {
-					WriteConsoleMsg(UserIndex, "Has vuelto a ser visible.", FontTypeNames_FONTTYPE_INFO);
+					WriteConsoleMsg(UserIndex, "You are no longer hidden.", FontTypeNames_FONTTYPE_INFO);
 					SetInvisible(UserIndex, UserList[UserIndex].Char.CharIndex, false);
 				}
 			}
@@ -783,7 +783,7 @@ void DakaraClientPacketHandler::handleAttack(Attack* p) { (void)p;
 		} else {
 			if (UserList[UserIndex].flags.invisible == 0) {
 				SetInvisible(UserIndex, UserList[UserIndex].Char.CharIndex, false);
-				WriteConsoleMsg(UserIndex, "¡Has vuelto a ser visible!", FontTypeNames_FONTTYPE_INFO);
+				WriteConsoleMsg(UserIndex, "¡You are no longer hidden!", FontTypeNames_FONTTYPE_INFO);
 			}
 		}
 	}
@@ -1276,7 +1276,7 @@ void DakaraClientPacketHandler::handleWork(Work* p) { (void)p;
 		if (UserList[UserIndex].flags.Oculto == 1) {
 			/* '[CDT 17-02-2004] */
 			if (UserList[UserIndex].flags.UltimoMensaje != 2) {
-				WriteConsoleMsg(UserIndex, "Ya estás oculto.", FontTypeNames_FONTTYPE_INFO);
+				WriteConsoleMsg(UserIndex, "You are already hidden.", FontTypeNames_FONTTYPE_INFO);
 				UserList[UserIndex].flags.UltimoMensaje = 2;
 			}
 			/* '[/CDT] */

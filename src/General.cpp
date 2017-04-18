@@ -956,7 +956,7 @@ void EfectoInvisibilidad(int UserIndex) {
 		UserList[UserIndex].Counters.Invisibilidad = RandomNumber(-100, 100);
 		UserList[UserIndex].flags.invisible = 0;
 		if (UserList[UserIndex].flags.Oculto == 0) {
-			WriteConsoleMsg(UserIndex, "Has vuelto a ser visible.", FontTypeNames_FONTTYPE_INFO);
+			WriteConsoleMsg(UserIndex, "You are no longer hidden.", FontTypeNames_FONTTYPE_INFO);
 
 			/* ' Si navega ya esta visible.. */
 			if (UserList[UserIndex].flags.Navegando != 1) {
@@ -1249,7 +1249,7 @@ void Sanar(int UserIndex, bool & EnviarStats, int Intervalo) {
 			if (UserList[UserIndex].Stats.MinHp > UserList[UserIndex].Stats.MaxHp) {
 				UserList[UserIndex].Stats.MinHp = UserList[UserIndex].Stats.MaxHp;
 			}
-			WriteConsoleMsg(UserIndex, "Has sanado.", FontTypeNames_FONTTYPE_INFO);
+			WriteConsoleMsg(UserIndex, "Your wounds slowly heal.", FontTypeNames_FONTTYPE_INFO);
 			EnviarStats = true;
 		}
 	}
@@ -1286,7 +1286,7 @@ void PasarSegundo() {
 				UserList[i].Counters.Salir = UserList[i].Counters.Salir - 1;
 				if (UserList[i].Counters.Salir <= 0) {
 					if (UserIndexSocketValido(i)) {
-						WriteConsoleMsg(i, "Gracias por jugar Argentum Online", FontTypeNames_FONTTYPE_INFO);
+						WriteConsoleMsg(i, "Thanks for playing Argentum Online", FontTypeNames_FONTTYPE_INFO);
 						WriteDisconnect(i);
 						FlushBuffer(i);
 					}

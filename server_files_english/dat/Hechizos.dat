@@ -267,12 +267,12 @@ Resis=1
 '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 [HECHIZO5]
-Nombre=Curar Heridas Graves
+Nombre=Healing wave
 Desc=Con esta milagrosa sanación para las heridas más profundas y dolorosas, podrás rápidamente devolver la salud a quienes agonizan. Se trata de un conjuro de una complejidad intermedia, pero que suele resultar fundamental para los jóvenes aventureros que desean recorrer el mundo y enfrentarse con sus peligros.
 PalabrasMagicas=EN CORP SANCTIS
-HechizeroMsg=Le has sanado graves heridas a 
-TargetMsg=te ha sanado graves heridas.
-PropioMsg=Te has sanado graves heridas.
+HechizeroMsg=You have restored healthpoints to
+TargetMsg=has healen you.
+PropioMsg=You have restored your health.
 Tipo=1
 WAV=18
 FXgrh=9
@@ -454,11 +454,11 @@ Resis=1
 '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 [HECHIZO8]
-Nombre=Proyectil Mágico
+Nombre=Magic missile
 Desc=Este rentable hechizo de ataque resulta el ideal para los niveles intermedios, pues les permitirá un gran poder de ataque que no sólo facilitará entrenar velozmente, si no que además, puede ser utilizado como una respetable arma en los combates contra tus adversarios.
 PalabrasMagicas=VAX IN TAR
-HechizeroMsg=Has lanzado un proyectil mágico sobre 
-TargetMsg=ha lanzado un proyectil mágico sobre ti.
+HechizeroMsg=You have casted magic missile on
+TargetMsg=has casted magic missile on you
 Tipo=1
 WAV=111
 FXgrh=10
@@ -582,9 +582,9 @@ Resis=0
 Nombre=Untangle
 Desc=Conjuro con el cual podrás contrarrestar los efectos tanto de la parálisis como de la inmovilización. En virtud de que los hechizos de estatismo son usados con mucha frecuencia por todos las clases mágicas que habitan estas tierras, éste conjuro se vuelve prácticamente vital para cualquier valiente que esté dispuesto a combatir.
 PalabrasMagicas=AN HOAX VORP
-HechizeroMsg=Le has devuelto la movilidad a 
-TargetMsg=te ha devuelto la movilidad.
-PropioMsg=Te has devuelto la movilidad.
+HechizeroMsg=You have untangled
+TargetMsg=has untangled you
+PropioMsg=You have untangled yourself
 Tipo=2
 WAV=110
 FXgrh=0
@@ -892,11 +892,11 @@ Resis=0
 '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 [HECHIZO15]
-Nombre=Fire explosion
+Nombre=Fireball
 Desc=Poderoso hechizo de ataque. Su costo en relación al dano que provoca lo convierte en un arma más propia para el combate que para el entrenamiento. Es ideal para aquellos aprendices de magia que todavía no alcanzaron a conocer el secreto de los hechizos mayores y necesitan estar bien equipados para la guerra.
 PalabrasMagicas=EN VAX ON TAR
-HechizeroMsg=Has lanzado una tormenta de fuego sobre 
-TargetMsg=lanzó una tormenta de fuego sobre ti.
+HechizeroMsg=You have casted fireball on
+TargetMsg=has casted fireball on you
 Tipo=1
 WAV=27
 FXgrh=7
@@ -1081,9 +1081,9 @@ Resis=0
 Nombre=Increase Agility
 Desc=Podrás aumentar la agilidad del destinatario a través de este muy útil sortilegio. Con él devolverás al cuerpo toda la ligereza y velocidad que necesita para adquirir una verdadera destreza guerrera. Su facilidad y los pocos recursos que insume su práctica, lo convierten en una herramienta sumamente útil que no puede faltarle a ningún buen combatiente.
 PalabrasMagicas=YUP A'INC
-HechizeroMsg=Has aumentado la agilidad de 
-TargetMsg=ha aumentado tu agilidad.
-PropioMsg=Has aumentado tu agilidad.
+HechizeroMsg=You have increased the agility of
+TargetMsg=has increased your agility.
+PropioMsg=You have incresead your agility.
 Tipo=1
 WAV=17
 FXgrh=20
@@ -1207,9 +1207,9 @@ Resis=0
 Nombre=Increase strength
 Desc= El poder mágico que encierra este hechizo te permitirá aumentar notoriamente la fuerza y el poderío de la persona sobre quien lo invoques. Al igual que el hechizo de celeridad, su facilidad y los pocos recursos que insume su práctica, lo convierten en una herramienta sumamente útil que no puede faltarle a ningún buen combatiente.
 PalabrasMagicas=Ar A'kron
-HechizeroMsg=Has lanzado fuerza sobre 
-TargetMsg=ha lanzado fuerza sobre ti.
-PropioMsg=Has lanzado fuerza sobre ti.
+HechizeroMsg=You have increased the strength of
+TargetMsg=has increasen your strength.
+PropioMsg=You have increased your strength.
 Tipo=1
 WAV=112
 FXgrh=17
@@ -1391,11 +1391,11 @@ Resis=0
 '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 [HECHIZO23]
-Nombre=Electric shock
+Nombre=Thunder
 Desc=Éste es uno de los hechizos de dano más poderoso de todo el Argentum. Al controlarlo podrás manipular las fuerzas de la naturaleza de modo tal que del cielo mismo caiga una fuerte descarga de electricidad sobre el objetivo. El dano que provoca en sus vícitimas puede ser mortal frente a principiantes o aprendices.
 PalabrasMagicas=T'HY KOOOL
-HechizeroMsg=Has lanzado una descarga eléctrica sobre 
-TargetMsg=ha lanzado una descarga eléctrica sobre ti.
+HechizeroMsg=You have casted thunder on
+TargetMsg=Has casted thunder on you.
 Tipo=1
 WAV=113
 FXgrh=11
@@ -1456,9 +1456,9 @@ Resis=1
 Nombre=Entangle
 Desc=Este valioso sortilegio te permitirá dejar a la víctima sin la capacidad de desplazarse, tendrá la sensación de que una poderosa fuerza lo atrae hacia el piso, y si bien podrá mover sus miembros, no podrá dejar el lugar en el que se encuentra. 
 PalabrasMagicas=Är Prop s'uo
-HechizeroMsg=Has inmovilizado a 
-TargetMsg=te ha inmovilizado.
-PropioMsg=Te has inmovilizado.
+HechizeroMsg=You have entangled
+TargetMsg=has entangled you
+PropioMsg=You have entangled.
 Tipo=2
 WAV=16
 FXgrh=12
@@ -1516,11 +1516,11 @@ Resis=0
 '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 [HECHIZO25]
-Nombre=Apocalipsis
+Nombre=Apocalypse
 Desc=El ataque mágico más letal de estas tierras. Sólo aquellos avezados en el arte de la magia pueden aprender este temible hechizo. Su poder es fulminante y suele ser mortal para quien es víctima de él.  
 PalabrasMagicas=Rahma Nanarak O'al
-HechizeroMsg=Has lanzado Apocalipsis sobre 
-TargetMsg=lanzó Apocalipsis sobre ti.
+HechizeroMsg=You have casted Apocalypse on
+TargetMsg=has casted Apocalypse on you.
 Tipo=1
 WAV=27
 FXgrh=13
