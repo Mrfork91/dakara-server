@@ -780,8 +780,8 @@ void CheckUserLevel(int UserIndex, bool notifyUser) {
 
 		UserList[UserIndex].Stats.SkillPts = UserList[UserIndex].Stats.SkillPts + Pts;
 
-		WriteConsoleMsg(UserIndex, "Has ganado un total de " + vb6::CStr(Pts) + " skillpoints.",
-				FontTypeNames_FONTTYPE_INFO);
+//		WriteConsoleMsg(UserIndex, "Has ganado un total de " + vb6::CStr(Pts) + " skillpoints.",
+//				FontTypeNames_FONTTYPE_INFO);
 	}
 
 	WriteUpdateUserStats(UserIndex);

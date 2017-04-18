@@ -940,7 +940,7 @@ void LanzarHechizo(int SpellIndex, int UserIndex) {
 							FontTypeNames_FONTTYPE_WARNING);
 				}
 			} else {
-				WriteConsoleMsg(UserIndex, "Target inválido.", FontTypeNames_FONTTYPE_INFO);
+				WriteConsoleMsg(UserIndex, "Invalid target.", FontTypeNames_FONTTYPE_INFO);
 			}
 
 			break;
@@ -1099,7 +1099,7 @@ void HechizoEstadoUsuario(int UserIndex, bool & HechizoCasteado) {
 	/* ' <-------- Agrega Envenenamiento ----------> */
 	if (Hechizos[HechizoIndex].Envenena == 1) {
 		if (UserIndex == TargetIndex) {
-			WriteConsoleMsg(UserIndex, "No puedes atacarte a vos mismo.", FontTypeNames_FONTTYPE_FIGHT);
+			WriteConsoleMsg(UserIndex, "You cant attack yourself.", FontTypeNames_FONTTYPE_FIGHT);
 			return;
 		}
 
@@ -1146,7 +1146,7 @@ void HechizoEstadoUsuario(int UserIndex, bool & HechizoCasteado) {
 	/* ' <-------- Agrega Maldicion ----------> */
 	if (Hechizos[HechizoIndex].Maldicion == 1) {
 		if (UserIndex == TargetIndex) {
-			WriteConsoleMsg(UserIndex, "No puedes atacarte a vos mismo.", FontTypeNames_FONTTYPE_FIGHT);
+			WriteConsoleMsg(UserIndex, "You cant attack yourself.", FontTypeNames_FONTTYPE_FIGHT);
 			return;
 		}
 
@@ -1178,7 +1178,7 @@ void HechizoEstadoUsuario(int UserIndex, bool & HechizoCasteado) {
 	/* ' <-------- Agrega Paralisis/Inmobilidad ----------> */
 	if (Hechizos[HechizoIndex].Paraliza == 1 || Hechizos[HechizoIndex].Inmoviliza == 1) {
 		if (UserIndex == TargetIndex) {
-			WriteConsoleMsg(UserIndex, "No puedes atacarte a vos mismo.", FontTypeNames_FONTTYPE_FIGHT);
+			WriteConsoleMsg(UserIndex, "You cant attack yourself.", FontTypeNames_FONTTYPE_FIGHT);
 			return;
 		}
 
@@ -1399,7 +1399,7 @@ void HechizoEstadoUsuario(int UserIndex, bool & HechizoCasteado) {
 	/* ' <-------- Agrega Ceguera ----------> */
 	if (Hechizos[HechizoIndex].Ceguera == 1) {
 		if (UserIndex == TargetIndex) {
-			WriteConsoleMsg(UserIndex, "No puedes atacarte a vos mismo.", FontTypeNames_FONTTYPE_FIGHT);
+			WriteConsoleMsg(UserIndex, "You cant attack yourself.", FontTypeNames_FONTTYPE_FIGHT);
 			return;
 		}
 
@@ -1434,7 +1434,7 @@ void HechizoEstadoUsuario(int UserIndex, bool & HechizoCasteado) {
 	/* ' <-------- Agrega Estupidez (Aturdimiento) ----------> */
 	if (Hechizos[HechizoIndex].Estupidez == 1) {
 		if (UserIndex == TargetIndex) {
-			WriteConsoleMsg(UserIndex, "No puedes atacarte a vos mismo.", FontTypeNames_FONTTYPE_FIGHT);
+			WriteConsoleMsg(UserIndex, "You cant attack yourself.", FontTypeNames_FONTTYPE_FIGHT);
 			return;
 		}
 
@@ -2096,7 +2096,7 @@ bool HechizoPropUsuario(int UserIndex) {
 	} else if (Hechizos[SpellIndex].SubeHP == 2) {
 
 		if (UserIndex == TargetIndex) {
-			WriteConsoleMsg(UserIndex, "No puedes atacarte a vos mismo.", FontTypeNames_FONTTYPE_FIGHT);
+			WriteConsoleMsg(UserIndex, "You cant attack yourself.", FontTypeNames_FONTTYPE_FIGHT);
 			return retval;
 		}
 

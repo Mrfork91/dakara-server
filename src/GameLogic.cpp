@@ -1080,12 +1080,14 @@ void LookatTile(int UserIndex, int Map, int X, int Y) {
 						Stat = Stat + " <" + GuildName(UserList[TempCharIndex].GuildIndex) + ">";
 					}
 
-					if (vb6::Len(UserList[TempCharIndex].desc) > 0) {
-						Stat = "Ves a " + UserList[TempCharIndex].Name + Stat + " - "
-								+ UserList[TempCharIndex].desc;
-					} else {
-						Stat = "Ves a " + UserList[TempCharIndex].Name + Stat;
-					}
+//					if (vb6::Len(UserList[TempCharIndex].desc) > 0) {
+//						Stat = "You see " + UserList[TempCharIndex].Name + Stat + " - "
+//								+ UserList[TempCharIndex].desc;
+//					} else {
+//						Stat = "You see " + UserList[TempCharIndex].Name + Stat;
+//					}
+
+					Stat = "You see " + UserList[TempCharIndex].Name;
 
 					if (UserTienePrivilegio(TempCharIndex, PlayerType_RoyalCouncil)) {
 						Stat = Stat + " [CONSEJO DE BANDERBILL]";

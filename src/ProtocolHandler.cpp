@@ -1526,7 +1526,7 @@ void DakaraClientPacketHandler::handleWorkLeftClick(WorkLeftClick* p) { (void)p;
 			LanzarHechizo(UserList[UserIndex].flags.Hechizo, UserIndex);
 			UserList[UserIndex].flags.Hechizo = 0;
 		} else {
-			WriteConsoleMsg(UserIndex, "¡Primero selecciona el hechizo que quieres lanzar!",
+			WriteConsoleMsg(UserIndex, "¡First select the speel you want to cast!",
 					FontTypeNames_FONTTYPE_INFO);
 		}
 
@@ -1914,7 +1914,7 @@ void DakaraClientPacketHandler::handleSpellInfo(SpellInfo* p) { (void)p;
 
 	/* 'Validate slot */
 	if (spellSlot < 1 || spellSlot > MAXUSERHECHIZOS) {
-		WriteConsoleMsg(UserIndex, "¡Primero selecciona el hechizo!", FontTypeNames_FONTTYPE_INFO);
+		WriteConsoleMsg(UserIndex, "¡First select the spell!", FontTypeNames_FONTTYPE_INFO);
 		return;
 	}
 

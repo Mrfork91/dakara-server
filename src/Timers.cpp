@@ -99,7 +99,7 @@ void CheckIdleUser() {
 			}
 
 			if (UserList[iUserIndex].Counters.IdleCount >= IdleLimit) {
-				WriteShowMessageBox(iUserIndex, "Demasiado tiempo inactivo. Has sido desconectado.");
+				WriteShowMessageBox(iUserIndex, "Disconnected due to inactivity");
 				/* 'mato los comercios seguros */
 				if (UserList[iUserIndex].ComUsu.DestUsu > 0) {
 					if (UserList[UserList[iUserIndex].ComUsu.DestUsu].flags.UserLogged) {

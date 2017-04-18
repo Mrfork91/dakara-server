@@ -100,7 +100,7 @@ void DoOcultarse(int UserIndex) {
 		if (UserList[UserIndex].flags.Navegando == 0) {
 			SetInvisible(UserIndex, UserList[UserIndex].Char.CharIndex, true);
 
-			WriteConsoleMsg(UserIndex, "¡Te has escondido entre las sombras!", FontTypeNames_FONTTYPE_INFO);
+			WriteConsoleMsg(UserIndex, "¡You have vanished from sight!", FontTypeNames_FONTTYPE_INFO);
 			/* ' Es un pirata navegando */
 		} else {
 			/* ' Le cambiamos el body a galeon fantasmal */
@@ -114,7 +114,7 @@ void DoOcultarse(int UserIndex) {
 	} else {
 		/* '[CDT 17-02-2004] */
 		if (UserList[UserIndex].flags.UltimoMensaje != 4) {
-			WriteConsoleMsg(UserIndex, "¡No has logrado esconderte!", FontTypeNames_FONTTYPE_INFO);
+			WriteConsoleMsg(UserIndex, "¡You didnt manage to hide!", FontTypeNames_FONTTYPE_INFO);
 			UserList[UserIndex].flags.UltimoMensaje = 4;
 		}
 		/* '[/CDT] */

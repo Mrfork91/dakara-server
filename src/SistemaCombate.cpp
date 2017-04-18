@@ -2355,7 +2355,7 @@ void LanzarProyectil(int UserIndex, int X, int Y) {
 
 		/* 'Prevent from hitting self */
 		if (TargetUserIndex == UserIndex) {
-			WriteConsoleMsg(UserIndex, "¡No puedes atacarte a vos mismo!", FontTypeNames_FONTTYPE_INFO);
+			WriteConsoleMsg(UserIndex, "¡You cant attack yourself!", FontTypeNames_FONTTYPE_INFO);
 			return;
 		}
 
