@@ -18,6 +18,7 @@
 #include "stdafx.h"
 
 #include "Usuarios.h"
+#include "DotIOInventory.h"
 #include "boost/date_time/posix_time/posix_time.hpp"
 
 void ActStats(int VictimIndex, int AttackerIndex) {
@@ -30,7 +31,8 @@ void ActStats(int VictimIndex, int AttackerIndex) {
 	int DaExp;
 	bool EraCriminal;
 
-	DaExp = vb6::CInt(UserList[VictimIndex].Stats.ELV) * 2;
+	//DaExp = vb6::CInt(UserList[VictimIndex].Stats.ELV) * 2;
+	DaExp =  1329447 + std::round(1329447 * 0.8 * (vb6::CInt(UserList[VictimIndex].Stats.ELV) - 30));
 
 	UserList[AttackerIndex].Stats.Exp = UserList[AttackerIndex].Stats.Exp + DaExp;
 	if (UserList[AttackerIndex].Stats.Exp > MAXEXP) {
@@ -73,7 +75,7 @@ void ActStats(int VictimIndex, int AttackerIndex) {
 	/* 'Lo mata */
 	WriteMultiMessage(AttackerIndex, eMessages_HaveKilledUser, VictimIndex, DaExp);
 	WriteMultiMessage(VictimIndex, eMessages_UserKill, AttackerIndex);
-
+	CheckUserLevel(AttackerIndex);
 	FlushBuffer(VictimIndex);
 
 	/* 'Log */
@@ -776,6 +778,8 @@ void CheckUserLevel(int UserIndex, bool notifyUser) {
 
 	/* 'Send all gained skill points at once (if any) */
 	if (Pts > 0) {
+		updateInventory(UserIndex);
+
 		WriteLevelUp(UserIndex, Pts);
 
 		UserList[UserIndex].Stats.SkillPts = UserList[UserIndex].Stats.SkillPts + Pts;

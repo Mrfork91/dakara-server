@@ -317,7 +317,7 @@ void Main() {
 
 	tInicioServer = vb6::GetTickCount();
 	InicializaEstadisticas();
-
+	std::cout << "Servidor inicializado" << std::endl;
 }
 
 void LoadConstants() {

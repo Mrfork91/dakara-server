@@ -1220,6 +1220,9 @@ void HechizoEstadoUsuario(int UserIndex, bool & HechizoCasteado) {
 
 			UserList[TargetIndex].flags.Paralizado = 1;
 			UserList[TargetIndex].Counters.Paralisis = IntervaloParalizado;
+			if (UserList[TargetIndex].Stats.MaxMAN == 0) {
+				UserList[TargetIndex].Counters.Paralisis = 90;
+			}
 
 			UserList[TargetIndex].flags.ParalizedByIndex = UserIndex;
 			UserList[TargetIndex].flags.ParalizedBy = UserList[UserIndex].Name;

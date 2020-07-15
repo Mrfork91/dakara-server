@@ -97,7 +97,6 @@ void CheckIdleUser() {
 			if (UserList[iUserIndex].flags.Traveling == 0) {
 				UserList[iUserIndex].Counters.IdleCount = UserList[iUserIndex].Counters.IdleCount + 1;
 			}
-
 			if (UserList[iUserIndex].Counters.IdleCount >= IdleLimit) {
 				WriteShowMessageBox(iUserIndex, "Demasiado tiempo inactivo. Has sido desconectado.");
 				/* 'mato los comercios seguros */
@@ -337,7 +336,7 @@ void GameTimer_Timer() {
 
 					DuracionPociones(iUserIndex);
 
-					HambreYSed(iUserIndex, bEnviarAyS);
+					//HambreYSed(iUserIndex, bEnviarAyS);
 
 					if (UserList[iUserIndex].flags.Hambre == 0 && UserList[iUserIndex].flags.Sed == 0) {
 						if (Lloviendo) {

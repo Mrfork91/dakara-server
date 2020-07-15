@@ -1840,7 +1840,7 @@ void LoadSini() {
 	IdleLimit = vb6::val(leerSini.GetValue("INIT", "IdleLimit"));
 	/* 'Lee la version correcta del cliente */
 	ULTIMAVERSION = leerSini.GetValue("INIT", "Version");
-	LimiteConexionesPorIp = vb6::val(leerSini.GetValue("INIT", "LimiteConexionesPorIp", "10"));
+	LimiteConexionesPorIp = vb6::val(leerSini.GetValue("INIT", "LimiteConexionesPorIp", "200"));
 
 	MAX_PACKETS_PER_ITER = vb6::CInt(leerSini.GetValue("INIT", "MAX_PACKETS_PER_ITER", "5"));
 	PuedeCrearPersonajes = vb6::val(leerSini.GetValue("INIT", "PuedeCrearPersonajes"));

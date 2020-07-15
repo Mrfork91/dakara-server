@@ -28,10 +28,6 @@ private:
 
     void loadUserIni();
 
-    void loadUserInventoryItems();
-
-    void loadUserInventory();
-
     void updateUserPosition();
     void updateUserLevel();
 

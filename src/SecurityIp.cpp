@@ -54,7 +54,6 @@ bool IpSecurityAceptarNuevaConexion(std::string ip) {
 bool IPSecuritySuperaLimiteConexiones(std::string ip) {
 	bool retval = false;
 	auto it = IpSecurityTable.find(ip);
-
 	if (it == IpSecurityTable.end()) {
 		retval = false;
 	} else {

@@ -1095,6 +1095,9 @@ bool UsuarioImpacto(int AtacanteIndex, int VictimaIndex) {
 		Skill = eSkill_Wrestling;
 	}
 
+	//
+	UserPoderEvasion = UserPoderEvasion / 1.5;
+	//
 	/* ' Chances are rounded */
 	ProbExito = MaximoInt(10, MinimoInt(90, 50 + (PoderAtaque - UserPoderEvasion) * 0.4));
 
@@ -1528,7 +1531,7 @@ bool PuedeAtacar(int AttackerIndex, int VictimIndex) {
 				FontTypeNames_FONTTYPE_INFO);
 		return retval;
 	}
-
+	
 	/* 'Estamos en una Arena? o un trigger zona segura? */
 	switch (TriggerZonaPelea(AttackerIndex, VictimIndex)) {
 	case eTrigger6_TRIGGER6_PERMITE:
@@ -2208,11 +2211,7 @@ eTrigger6 TriggerZonaPelea(int Origen, int Destino) {
 	tDst = MapData[UserList[Destino].Pos.Map][UserList[Destino].Pos.X][UserList[Destino].Pos.Y].trigger;
 
 	if (tOrg == eTrigger_ZONAPELEA || tDst == eTrigger_ZONAPELEA) {
-		if (tOrg == tDst) {
-			retval = eTrigger6_TRIGGER6_PERMITE;
-		} else {
-			retval = eTrigger6_TRIGGER6_PROHIBE;
-		}
+		retval = eTrigger6_TRIGGER6_PERMITE;
 	} else {
 		retval = eTrigger6_TRIGGER6_AUSENTE;
 	}

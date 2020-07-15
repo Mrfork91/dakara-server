@@ -784,13 +784,13 @@ bool FaccionPuedeUsarItem(int UserIndex, int ObjIndex, std::string& sMotivo) {
 	/* '14/01/2010: ZaMa - Agrego el motivo por el que no puede equipar/usar el item. */
 	/* '*************************************************** */
 
-	if (ObjData[ObjIndex].Real == 1) {
+	if (ObjData[ObjIndex].Real > 0) {
 		if (!criminal(UserIndex)) {
 			retval = esArmada(UserIndex);
 		} else {
 			retval = false;
 		}
-	} else if (ObjData[ObjIndex].Caos == 1) {
+	} else if (ObjData[ObjIndex].Caos > 0) {
 		if (criminal(UserIndex)) {
 			retval = esCaos(UserIndex);
 		} else {
@@ -933,7 +933,7 @@ void EquiparInvItem(int UserIndex, int Slot) {
 		/* ' [TEMPORAL] If .flags.Navegando = 1 Then Exit Sub */
 
 		/* 'Nos aseguramos que puede usarla */
-		if (ClasePuedeUsarItem(UserIndex, ObjIndex, sMotivo)
+		if (ClasePuedeUsarItem(UserIndex, ObjIndex, sMotivo) // ACA
 				&& SexoPuedeUsarItem(UserIndex, ObjIndex, sMotivo)
 				&& CheckRazaUsaRopa(UserIndex, ObjIndex, sMotivo)
 				&& FaccionPuedeUsarItem(UserIndex, ObjIndex, sMotivo)) {

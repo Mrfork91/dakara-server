@@ -131,11 +131,11 @@ void DakaraSocketEvents::onSocketNew(dakara::Socket* s) {
 			return;
 		}
 
-//		if (IPSecuritySuperaLimiteConexiones(ip)) {
-//			IpRestarConexion(ip);
-//			s->close(true);
-//			return;
-//		}
+		if (IPSecuritySuperaLimiteConexiones(ip)) {
+			IpRestarConexion(ip);
+			s->close(true);
+			return;
+		}
 
 		UserList[UserIndex].incomingData.reset(new clsByteQueue());
 		UserList[UserIndex].outgoingData.reset(new clsByteQueue());
