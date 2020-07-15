@@ -7,10 +7,12 @@ bin
 Debug
 Release
 buildsettingslocal.py
-build
+build/CMakeCache.txt
+build/cmake_install.cmake
+build/dakaraserver
+build/Makefile
+build/CMakeFiles/*
 *.pyc
 server-resources
 *.swp
 vc2015
-
-
