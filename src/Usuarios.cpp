@@ -32,7 +32,7 @@ void ActStats(int VictimIndex, int AttackerIndex) {
 	bool EraCriminal;
 
 	//DaExp = vb6::CInt(UserList[VictimIndex].Stats.ELV) * 2;
-	DaExp =  1329447 + std::round(1329447 * 0.8 * (vb6::CInt(UserList[VictimIndex].Stats.ELV) - 30));
+	DaExp =  1329447 + std::round(1329447 * 1.5 * (vb6::CInt(UserList[VictimIndex].Stats.ELV) - 30));
 
 	UserList[AttackerIndex].Stats.Exp = UserList[AttackerIndex].Stats.Exp + DaExp;
 	if (UserList[AttackerIndex].Stats.Exp > MAXEXP) {

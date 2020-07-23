@@ -130,15 +130,13 @@ void updateWeapons(int UserIndex, double progressRatio) {
             if (progressRatio >= 1) weapon = 660; // Engarzado
             break;
         case eClass_Cleric:
-            if (progressRatio >= 0) weapon = 2; // Espada larga
-            if (progressRatio >= 0.2) weapon = 124; // Katana
-            if (progressRatio >= 0.6) weapon = 990; // Mazo del juicio
+            if (progressRatio >= 0) weapon = 124; // Katana
+            if (progressRatio >= 0.3) weapon = 990; // Mazo del juicio
             if (progressRatio >= 0.9) weapon = 129; // 2 filos
             break;
         case eClass_Paladin:
-            if (progressRatio >= 0) weapon = 124; // Katana
-            if (progressRatio >= 0.3) weapon = 990; // Mazo del juicio
-            if (progressRatio >= 0.7) weapon = 129; // 2 filos
+            if (progressRatio >= 0) weapon = 990; // Mazo del juicio
+            if (progressRatio >= 0.4) weapon = 129; // 2 filos
             if (progressRatio >= 1) weapon = 403; // Espada de plata
             break;
         case eClass_Warrior:
@@ -148,14 +146,12 @@ void updateWeapons(int UserIndex, double progressRatio) {
             if (progressRatio >= 0.8) weapon = 403; // Espada de plata
             break;
         case eClass_Assasin:
-            if (progressRatio >= 0) weapon = 164; // Espada corta
-            if (progressRatio >= 0.1) weapon = 365; // Daga +2
-            if (progressRatio >= 0.4) weapon = 366; // Daga +3
-            if (progressRatio >= 0.9) weapon = 367; // Daga +4
+            if (progressRatio >= 0) weapon = 365; // Daga +2
+            if (progressRatio >= 0.2) weapon = 366; // Daga +3
+            if (progressRatio >= 0.7) weapon = 367; // Daga +4
             break;
         case eClass_Thief:
-            if (progressRatio >= 0) weapon = 164; // Espada corta
-            if (progressRatio >= 0.2) weapon = 159; // Hacha de barbaro
+            if (progressRatio >= 0) weapon = 159; // Hacha de barbaro
             break;
         case eClass_Bard: // TODO
             if (progressRatio >= 0) weapon = 165; // Daga +1
@@ -173,8 +169,7 @@ void updateWeapons(int UserIndex, double progressRatio) {
             if (progressRatio >= 1) weapon = 403; // Espada de plata
             break;
         case eClass_Hunter:
-            if (progressRatio >= 0) weapon = 663; // Arco simple reforzado
-            if (progressRatio >= 0.1) weapon = 479; // Arco compuesto
+            if (progressRatio >= 0) weapon = 479; // Arco compuesto
             if (progressRatio >= 0.4) weapon = 664; // Arco compuesto reforzado
             if (progressRatio >= 0.8) weapon = 665; // Arco de cazador
             break;
@@ -349,7 +344,7 @@ void updateHelmet(int UserIndex, double progressRatio) {
             if (progressRatio >= 1) helmet = 405; // Casco de plata
             break;
         case eClass_Assasin:
-            if (progressRatio >= 0.2) helmet = 1002; // Casco de lobo
+            if (progressRatio >= 0.1) helmet = 1002; // Casco de lobo
             if (progressRatio >= 0.5) helmet = 132; // Casco de hierro
             if (progressRatio >= 0.8) helmet = 131; // Casco de hierro completo
             if (progressRatio >= 1) helmet = 405; // Casco de plata
@@ -390,8 +385,15 @@ vector<int> getValidArmors(int UserIndex) {
     vector<int> validArmors;
     string sMotivo;
 
+    eClass UserClase = UserList[UserIndex].clase;
+    bool noTunicas = UserClase == eClass_Assasin || UserClase == eClass_Paladin || UserClase == eClass_Warrior || 
+        UserClase == eClass_Hunter || UserClase == eClass_Thief || UserClase == eClass_Pirat;
+
 	for (int ObjIndex = 1; ObjIndex <= NumObjDatas; ++ObjIndex) {
         if (ObjData[ObjIndex].OBJType != eOBJType_otArmadura) {
+            continue;
+        }
+        if (noTunicas && (ObjData[ObjIndex].Name.find("Tunica") != string::npos || ObjData[ObjIndex].Name.find("Túnica") != string::npos)) {
             continue;
         }
         if (ObjData[ObjIndex].Newbie == 1) {
