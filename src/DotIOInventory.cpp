@@ -282,7 +282,7 @@ void updateRing(int UserIndex, double progressRatio) {
     int ring = 0;
     switch (UserClase) {
         case eClass_Warrior:
-            if (progressRatio >= 0) ring = 697; // Anillo de defensa magica
+            if (progressRatio >= 0.2) ring = 697; // Anillo de defensa magica
             if (progressRatio >= 0.5) ring = 698; // Anillo de resistencia magica
             if (progressRatio >= 1) ring = 699; // Anillo de disolucion magica
             break;
@@ -328,7 +328,7 @@ void updateHelmet(int UserIndex, double progressRatio) {
             if (progressRatio >= 1) helmet = 405; // Casco de plata
             break;
         case eClass_Warrior:
-            if (progressRatio >= 0) helmet = 132; // Casco de hierro
+            if (progressRatio >= 0.1) helmet = 132; // Casco de hierro
             if (progressRatio >= 0.3) helmet = 131; // Casco de hierro completo
             if (progressRatio >= 1) helmet = 405; // Casco de plata
             break;
@@ -350,7 +350,7 @@ void updateHelmet(int UserIndex, double progressRatio) {
             if (progressRatio >= 1) helmet = 405; // Casco de plata
             break;
         case eClass_Hunter:
-            if (progressRatio >= 0) helmet = 1001; // Casco de aguila
+            if (progressRatio >= 0.1) helmet = 1001; // Casco de aguila
             if (progressRatio >= 0.3) helmet = 131; // Casco de hierro completo
             if (progressRatio >= 1) helmet = 405; // Casco de plata
             break;
@@ -361,13 +361,13 @@ void updateHelmet(int UserIndex, double progressRatio) {
             if (progressRatio >= 0.5) helmet = 132; // Casco de hierro
             break;
         case eClass_Druid:
-            if (progressRatio >= 0) helmet = 1001; // Casco de aguila
+            if (progressRatio >= 0.1) helmet = 1001; // Casco de aguila
             if (progressRatio >= 0.3) helmet = 1002; // Casco de Lobo
             if (progressRatio >= 0.6) helmet = 1003; // Casco de Oso
             if (progressRatio >= 1) helmet = 1004; // Casco de tigre
             break;
         case eClass_Pirat:
-            if (progressRatio >= 0) helmet = 1010; // Sombrero pirata
+            if (progressRatio >= 0.1) helmet = 1010; // Sombrero pirata
             break;
         case eClass_Worker:
         case eClass_None:

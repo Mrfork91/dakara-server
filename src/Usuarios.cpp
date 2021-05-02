@@ -675,6 +675,8 @@ void CheckUserLevel(int UserIndex, bool notifyUser) {
 			break;
 		}
 
+		AumentoSTA = AumentoSTA * 10;
+
 		/* 'Actualizamos HitPoints */
 		UserList[UserIndex].Stats.MaxHp = UserList[UserIndex].Stats.MaxHp + AumentoHP;
 		if (UserList[UserIndex].Stats.MaxHp > STAT_MAXHP) {
