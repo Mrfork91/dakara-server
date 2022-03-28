@@ -133,9 +133,15 @@ void DotIO::loadUserIni() {
 void DotIO::loadUserStats() {
     int i;
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] =
-            18 + ModRaza[UserRaza].Fuerza;
+            (18 + ModRaza[UserRaza].Fuerza) * 2;
+	if (UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] > MAXATRIBUTOS) {
+				UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] = MAXATRIBUTOS;
+	}
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] =
-            18 + ModRaza[UserRaza].Agilidad;
+            (18 + ModRaza[UserRaza].Agilidad) * 2;
+    if (UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] > MAXATRIBUTOS) {
+			UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] = MAXATRIBUTOS;
+	}
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Inteligencia] =
             18 + ModRaza[UserRaza].Inteligencia;
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Carisma] =

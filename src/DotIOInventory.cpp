@@ -112,10 +112,6 @@ void updatePotions(int UserIndex) {
     if (UserList[UserIndex].Stats.MaxMAN > 0 || UserClase == eClass_Paladin || UserClase == eClass_Bandit) {
         addItem(UserIndex,37); // Pociones azules
     }
-    if (UserClase != eClass_Mage) {
-        addItem(UserIndex,39); // Pociones verdes
-    }
-    addItem(UserIndex,36); // Pociones amarillas
 }
 
 void updateWeapons(int UserIndex, double progressRatio) {

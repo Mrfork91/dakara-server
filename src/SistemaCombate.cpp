@@ -1165,6 +1165,26 @@ bool UsuarioAtacaUsuario(int AtacanteIndex, int VictimaIndex) {
 		return retval;
 	}
 
+	if (UserList[AtacanteIndex].flags.Oculto == 1 && UserList[AtacanteIndex].flags.AdminInvisible == 0) {
+		UserList[AtacanteIndex].flags.Oculto = 0;
+		UserList[AtacanteIndex].Counters.TiempoOculto = 0;
+
+		if (UserList[AtacanteIndex].flags.Navegando == 1) {
+			if (UserList[AtacanteIndex].clase == eClass_Pirat) {
+				ToggleBoatBody(AtacanteIndex);
+				WriteConsoleMsg(AtacanteIndex, "¡Has recuperado tu apariencia normal!",
+						FontTypeNames_FONTTYPE_INFO);
+				ChangeUserChar(AtacanteIndex, UserList[AtacanteIndex].Char.body, UserList[AtacanteIndex].Char.Head,
+						UserList[AtacanteIndex].Char.heading, NingunArma, NingunEscudo, NingunCasco);
+			}
+		} else {
+			if (UserList[AtacanteIndex].flags.invisible == 0) {
+				WriteConsoleMsg(AtacanteIndex, "Has vuelto a ser visible.", FontTypeNames_FONTTYPE_INFO);
+				SetInvisible(AtacanteIndex, UserList[AtacanteIndex].Char.CharIndex, false);
+			}
+		}
+	}
+
 	UsuarioAtacadoPorUsuario(AtacanteIndex, VictimaIndex);
 
 	if (UsuarioImpacto(AtacanteIndex, VictimaIndex)) {

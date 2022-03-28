@@ -379,11 +379,7 @@ bool checkInterval(int & startTime, int timeNow, int interval) {
 }
 
 int getInterval(int timeNow, int startTime) {
-	int retval;
-	if (timeNow < startTime) {
-		retval = 0x7FFFFFFF - startTime + timeNow + 1;
-	} else {
-		retval = timeNow - startTime;
-	}
-	return retval;
+	int interval = timeNow - startTime;
+	if (interval < 0) interval = -interval;
+	return interval;
 }

@@ -91,7 +91,7 @@ void DoOcultarse(int UserIndex) {
 		Suerte = Suerte * IntervaloOculto;
 
 		if (UserList[UserIndex].clase == eClass_Bandit) {
-			UserList[UserIndex].Counters.TiempoOculto = vb6::Int(Suerte / 2);
+			UserList[UserIndex].Counters.TiempoOculto = vb6::Int(Suerte / 10);
 		} else {
 			UserList[UserIndex].Counters.TiempoOculto = Suerte;
 		}
