@@ -55,9 +55,6 @@ void DotIO::loadUserHechizos() {
     addSpell(8); // misil magico
     //addSpell(14); // invisibilidad
     addSpell(5); // curar heridas graves
-    addSpell(18); // celeridad
-    addSpell(20); // fuerza
-
 }
 
 void DotIO::loadUserReputacion() {
@@ -132,16 +129,20 @@ void DotIO::loadUserIni() {
 
 void DotIO::loadUserStats() {
     int i;
-    UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] =
-            (18 + ModRaza[UserRaza].Fuerza) * 2;
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] = 18 + ModRaza[UserRaza].Fuerza;
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] = 18 + ModRaza[UserRaza].Agilidad;
+
+    // Dopa
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] *= 2;
+    UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] *= 2;
 	if (UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] > MAXATRIBUTOS) {
 				UserList[UserIndex].Stats.UserAtributos[eAtributos_Fuerza] = MAXATRIBUTOS;
 	}
-    UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] =
-            (18 + ModRaza[UserRaza].Agilidad) * 2;
     if (UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] > MAXATRIBUTOS) {
 			UserList[UserIndex].Stats.UserAtributos[eAtributos_Agilidad] = MAXATRIBUTOS;
 	}
+    //
+
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Inteligencia] =
             18 + ModRaza[UserRaza].Inteligencia;
     UserList[UserIndex].Stats.UserAtributos[eAtributos_Carisma] =
